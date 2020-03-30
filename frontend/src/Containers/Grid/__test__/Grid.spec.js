@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import React from "react";
 import configureMockStore from "redux-mock-store";
 import { Provider } from "react-redux";
-import { Grid } from "Containers";
+import { Grid } from "..";
 
 describe("Grid Component Test", () => {
   const div = document.createElement("div");
