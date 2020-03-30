@@ -1,0 +1,23 @@
+{
+  "name": "root_samu",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "eslint-plugin-react": "^7.19.0",
+    "react": "^16.13.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint frontend",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
