@@ -1,17 +1,17 @@
-import { createReducer, createActions } from "reduxsauce";
+import { createReducer, createActions } from 'reduxsauce';
 
 /* Action Creators start */
 export const { Types, Creators } = createActions({
-  startValidatePhone: ["phone", "creationToken", "sessionToken"],
-  successValidatePhone: ["phone"],
-  errorValidatePhone: ["error"]
+  startValidatePhone: ['phone', 'creationToken', 'sessionToken'],
+  successValidatePhone: ['phone'],
+  errorValidatePhone: ['error']
 });
 
 const initialState = {
-  phone: "",
-  name: "",
-  nickname: "",
-  email: ""
+  phone: '',
+  name: '',
+  nickname: '',
+  email: ''
 };
 
 /* Reducer */

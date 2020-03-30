@@ -1,4 +1,4 @@
-import { createReducer, createActions } from "reduxsauce";
+import { createReducer, createActions } from 'reduxsauce';
 
 /* Initial State */
 const initialState = 0;

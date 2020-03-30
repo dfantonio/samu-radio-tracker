@@ -1,12 +1,12 @@
-import { emailValid } from "../email";
-describe("CPF tests", () => {
-  it("Valid", () => {
-    expect(emailValid("teste@email.com")).toBe(true);
+import { emailValid } from '../email';
+describe('CPF tests', () => {
+  it('Valid', () => {
+    expect(emailValid('teste@email.com')).toBe(true);
   });
-  it("Invalid", () => {
-    expect(emailValid("testeemail.com")).toBe(false);
+  it('Invalid', () => {
+    expect(emailValid('testeemail.com')).toBe(false);
   });
-  it("Undefined", () => {
+  it('Undefined', () => {
     expect(emailValid(undefined)).toBe(false);
   });
 });

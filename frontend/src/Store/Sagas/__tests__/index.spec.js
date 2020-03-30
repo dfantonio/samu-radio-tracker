@@ -1,7 +1,7 @@
-import sagas from "..";
+import sagas from '..';
 
-describe("All Sagas tests", () => {
-  test("Teste de integração de todos os sagas", () => {
+describe('All Sagas tests', () => {
+  test('Teste de integração de todos os sagas', () => {
     const gen = sagas();
     gen.next();
   });

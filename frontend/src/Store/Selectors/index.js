@@ -1,3 +1,3 @@
-import { gridSelector } from "./route";
+import { gridSelector } from './route';
 
 export { gridSelector };

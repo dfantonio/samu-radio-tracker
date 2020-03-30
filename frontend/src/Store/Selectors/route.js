@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 /**
  * @typedef Header
@@ -15,40 +15,40 @@ import { createSelector } from "reselect";
 function getGrid(pathname, name) {
   return (
     {
-      "/": {
+      '/': {
         header: {
           displayLogo: true
         },
         footer: {}
       },
-      "/codeconfirm": {
+      '/codeconfirm': {
         header: {
           displayLogo: true
         },
         footer: {}
       },
-      "/register": {
+      '/register': {
         header: {
           displayLogo: true,
           title: name
-            ? ["Fala aí, ", name + "!"]
-            : ["Fala aí! \nSeja ", "bem-vindo!"]
+            ? ['Fala aí, ', name + '!']
+            : ['Fala aí! \nSeja ', 'bem-vindo!']
         },
         footer: {}
       },
-      "/success": {
+      '/success': {
         header: {
           displayLogo: true
         },
         footer: {}
       },
-      "/failure": {
+      '/failure': {
         header: {
           displayLogo: true
         },
         footer: {}
       },
-      "/alreadyregistered": {
+      '/alreadyregistered': {
         header: {
           displayLogo: true
         },
