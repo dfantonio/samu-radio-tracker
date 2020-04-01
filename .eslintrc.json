@@ -36,11 +36,21 @@
     "import/extensions": ["off", "never"],
     "import/no-unresolved": 2,
     "class-methods-use-this": ["off"],
+    "import/newline-after-import": ["error"],
     "react/self-closing-comp": [
       "error",
       {
         "component": true,
         "html": true
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
       }
     ]
   }

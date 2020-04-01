@@ -1,4 +1,4 @@
-import { Home, Login } from './Containers';
+import { RegisterStuff, Home, Login } from './Containers';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 import { history } from './Store/history';
@@ -9,6 +9,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path="/home" component={Home} />
+      <Route exact path="/cadastro" component={RegisterStuff} />
     </Switch>
   </ConnectedRouter>
 );
