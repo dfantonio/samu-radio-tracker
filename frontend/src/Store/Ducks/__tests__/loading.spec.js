@@ -1,4 +1,4 @@
-import loadingReducer, { Creators } from '../../Reducers/loading';
+import loadingReducer, { Creators } from '../loading';
 
 test('start loading', () => {
   loadingReducer(undefined, Creators.startLoading());

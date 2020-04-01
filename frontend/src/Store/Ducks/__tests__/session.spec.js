@@ -1,4 +1,4 @@
-import sessionReducer, { Creators } from '../../Reducers/session';
+import sessionReducer, { Creators } from '../session';
 
 describe('Session Reducer Tests', () => {
   it('call successSetToken', () => {

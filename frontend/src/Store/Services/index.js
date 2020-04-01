@@ -1,0 +1,1 @@
+export { addRadio } from './register';

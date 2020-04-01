@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reducers from './Reducers';
+import Ducks from './Ducks';
 import { history } from './history';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware, { END } from 'redux-saga';
@@ -21,7 +21,7 @@ const storeEnhancer = composeWithDevTools(
   applyMiddleware(sagaMiddleware, routerMiddleware(history))
 );
 
-const persistedReducer = persistReducer(persistConfig, reducers(history));
+const persistedReducer = persistReducer(persistConfig, Ducks(history));
 
 const store = createStore(persistedReducer, storeEnhancer);
 

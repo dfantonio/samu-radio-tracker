@@ -1,5 +1,5 @@
 import { takeLatest, put, all } from 'redux-saga/effects';
-import { Creators as loading } from '../Reducers/loading';
+import { Creators as loading } from '../Ducks/loading';
 
 export function* addLoader() {
   yield put(loading.startLoading());

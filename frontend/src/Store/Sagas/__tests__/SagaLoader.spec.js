@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 
 import { addLoader, removeLoader } from '../SagaLoader';
-import { Creators } from '../../Reducers/loading';
+import { Creators } from '../../Ducks/loading';
 
 describe('Loader Tests', () => {
   test('loader deve ser invocado', () => {

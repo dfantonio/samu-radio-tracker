@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import SagaLoader from './SagaLoader';
+import SagaRegisterRadio from './SagaRegisterRadio';
 
 export default function* sagas() {
-  yield all([SagaLoader()]);
+  yield all([SagaLoader(), SagaRegisterRadio()]);
 }
