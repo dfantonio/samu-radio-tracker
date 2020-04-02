@@ -6,14 +6,17 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useStyles, { Form } from './style';
 import { Radio, Battery, Place } from './Forms';
 import SubmitLoader from '../../Components/SubmitButton/SubmitButton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Creators as registerCreators } from '../../Store/Ducks/register';
+import { Creators as userCreators } from '../../Store/Ducks/user';
 
 const Home = () => {
   const classes = useStyles();
+  const initialStatus = { status: 3 };
   const [userChoose, setUserChoose] = useState(1);
-  const [payload, setPayload] = useState({});
+  const [payload, setPayload] = useState(initialStatus);
   const dispatch = useDispatch();
+  const { status } = useSelector(state => state.user);
 
   //Start loader button config
   const timer = React.useRef();
@@ -37,9 +40,10 @@ const Home = () => {
   }, [payload]);
 
   useEffect(() => {
-    setPayload({});
+    setPayload(initialStatus);
     setSuccess(false);
     setLoading(false);
+    dispatch(userCreators.startGetStatus());
   }, [userChoose]);
 
   function handleInputChange(event) {
@@ -59,8 +63,9 @@ const Home = () => {
     return id === userChoose ? 'contained' : 'outlined';
   }
 
+  //TODO: Ver o efeito da prop required nos inputs
   const inputs = {
-    1: <Radio onChange={handleInputChange} />,
+    1: <Radio onChange={handleInputChange} status={status} payload={payload} />,
     2: <Battery onChange={handleInputChange} />,
     3: <Place onChange={handleInputChange} />
   };

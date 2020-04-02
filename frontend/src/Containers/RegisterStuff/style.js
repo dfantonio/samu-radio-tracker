@@ -24,7 +24,7 @@ export const Form = styled.form`
   align-self: start;
   min-height: 400px;
 
-  & .MuiTextField-root {
+  & .MuiFormControl-root {
     margin: 10px 0px;
   }
 `;
