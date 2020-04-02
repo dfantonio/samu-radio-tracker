@@ -2,30 +2,30 @@ import { createReducer, createActions } from 'reduxsauce';
 
 /* Action Creators start */
 export const { Types, Creators } = createActions({
-  startValidatePhone: ['phone', 'creationToken', 'sessionToken'],
-  successValidatePhone: ['phone'],
-  errorValidatePhone: ['error']
+  startGetStatus: [],
+  successGetStatus: ['status'],
+  errorGetStatus: ['error'],
+  errors: {
+    status: ''
+  }
 });
 
 const initialState = {
-  phone: '',
-  name: '',
-  nickname: '',
-  email: ''
+  status: []
 };
 
 /* Reducer */
-function successValidatePhone(state, { phone }) {
-  return { ...initialState, phone };
+function successGetStatus(state, { status }) {
+  return { ...state, status };
 }
 
-function errorValidatePhone(state, { error }) {
-  return { ...initialState, error: { ...initialState.error, phone: error } };
+function errorGetStatus(state, { error }) {
+  return { ...initialState, errors: { ...state.errors, status: error } };
 }
 
 export const user = {
-  [Types.SUCCESS_VALIDATE_PHONE]: successValidatePhone,
-  [Types.ERROR_VALIDATE_PHONE]: errorValidatePhone
+  [Types.SUCCESS_GET_STATUS]: successGetStatus,
+  [Types.ERROR_GET_STATUS]: errorGetStatus
 };
 
 export default createReducer(initialState, user);

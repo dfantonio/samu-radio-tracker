@@ -1,13 +1,16 @@
-import { takeLatest, call } from 'redux-saga/effects';
-import { Creators as loading } from '../Ducks/loading';
-import { Types as registerTypes } from '../Ducks/register';
+import { takeLatest, call, put } from 'redux-saga/effects';
+import {
+  Types as registerTypes,
+  Creators as registerCreators
+} from '../Ducks/register';
 import { addRadio } from '../Services';
-import { bff } from '../Services/config';
 
 export function* registerRadio({ data }) {
-  console.log('saga: ', data);
-  bff();
-  yield call(addRadio, data);
+  try {
+    yield call(addRadio, data);
+  } catch (error) {
+    yield put(registerCreators.ErrorAddRadio(error.response.data));
+  }
 }
 
 export function* SagaRegisterRadio() {
