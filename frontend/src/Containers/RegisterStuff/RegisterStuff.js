@@ -5,44 +5,30 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useStyles, { Form } from './style';
 import { Radio, Battery, Place } from './Forms';
-import SubmitLoader from '../../Components/SubmitButton/SubmitButton';
+import SubmitButton from '../../Components/SubmitButton/SubmitButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Creators as registerCreators } from '../../Store/Ducks/register';
 import { Creators as userCreators } from '../../Store/Ducks/user';
 
 const Home = () => {
   const classes = useStyles();
-  const initialStatus = { status: 3 };
   const [userChoose, setUserChoose] = useState(1);
-  const [payload, setPayload] = useState(initialStatus);
+  const [payload, setPayload] = useState({});
   const dispatch = useDispatch();
   const { status } = useSelector(state => state.user);
-
-  //Start loader button config
-  const timer = React.useRef();
-
-  const [success, setSuccess] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const { errors, hasError, hasSuccess } = useSelector(state => state.register);
+  const { loading } = !!useSelector(state => state.loading);
 
   const handleButtonClick = () => {
     dispatch(registerCreators.startAddRadio(payload));
-    setSuccess(false);
-    setLoading(true);
-    timer.current = setTimeout(() => {
-      setSuccess(true);
-      setLoading(false);
-    }, 2000);
   };
-  //End loader button config
 
   useEffect(() => {
     console.log(payload);
   }, [payload]);
 
   useEffect(() => {
-    setPayload(initialStatus);
-    setSuccess(false);
-    setLoading(false);
+    setPayload({});
     dispatch(userCreators.startGetStatus());
   }, [userChoose]);
 
@@ -51,7 +37,10 @@ const Home = () => {
     const value = target.name === 'antena' ? target.checked : target.value;
     const name = target.name;
 
-    setSuccess(false);
+    if (hasSuccess) dispatch(registerCreators.clearSuccess());
+
+    if (errors[name])
+      dispatch(registerCreators.addRegisterErrors({ [name]: '' }));
 
     setPayload({
       ...payload,
@@ -63,9 +52,15 @@ const Home = () => {
     return id === userChoose ? 'contained' : 'outlined';
   }
 
-  //TODO: Ver o efeito da prop required nos inputs
   const inputs = {
-    1: <Radio onChange={handleInputChange} status={status} payload={payload} />,
+    1: (
+      <Radio
+        onChange={handleInputChange}
+        status={status}
+        payload={payload}
+        errors={errors}
+      />
+    ),
     2: <Battery onChange={handleInputChange} />,
     3: <Place onChange={handleInputChange} />
   };
@@ -93,9 +88,10 @@ const Home = () => {
         <Form noValidate autoComplete="off">
           {inputs[userChoose]}
         </Form>
-        <SubmitLoader
+        <SubmitButton
+          error={hasError}
           loading={loading}
-          success={success}
+          success={hasSuccess}
           onClick={handleButtonClick}
         />
       </div>

@@ -8,8 +8,9 @@ import { addRadio } from '../Services';
 export function* registerRadio({ data }) {
   try {
     yield call(addRadio, data);
+    yield put(registerCreators.SuccessAddRadio());
   } catch (error) {
-    yield put(registerCreators.ErrorAddRadio(error.response.data));
+    yield put(registerCreators.ErrorAddRadio(error.response.data.errors));
   }
 }
 

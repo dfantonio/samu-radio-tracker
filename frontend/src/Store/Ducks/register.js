@@ -2,36 +2,56 @@ import { createReducer, createActions } from 'reduxsauce';
 
 /* Action Creators start */
 export const { Types, Creators } = createActions({
+  addRegisterErrors: ['errors'],
+  clearSuccess: [],
   startAddRadio: ['data'],
-  SuccessAddRadio: ['response'],
-  ErrorAddRadio: ['error']
+  SuccessAddRadio: [],
+  ErrorAddRadio: ['errors']
 });
 
 const initialState = {
-  radio: '',
-  battery: '',
-  place: '',
+  hasError: false,
+  hasSuccess: false,
   errors: {
-    radio: '',
-    battery: '',
-    place: ''
+    serialNumber: '',
+    issi: '',
+    patrimonio: ''
   }
 };
 
 /* Reducers */
-function startAddRadio(state, data) {
+function clearSuccess(state) {
+  return { ...state, hasSuccess: false };
+}
+
+function addRegisterErrors(state, { errors }) {
+  const hasErrors = Object.values(state.errors).some(e => e);
+
+  return {
+    ...state,
+    hasErrors,
+    errors: {
+      ...state.errors,
+      ...errors
+    }
+  };
+}
+
+function startAddRadio(state) {
   return { ...state };
 }
 
 function SuccessAddRadio(state) {
-  return { ...state };
+  return { ...state, hasSuccess: true, hasError: false };
 }
 
-function ErrorAddRadio(state, { error }) {
-  return { ...state, errors: { ...state.errors, radio: error } };
+function ErrorAddRadio(state, { errors }) {
+  return { ...state, hasError: true, errors: { ...state.errors, ...errors } };
 }
 
 export const user = {
+  [Types.ADD_REGISTER_ERRORS]: addRegisterErrors,
+  [Types.CLEAR_SUCCESS]: clearSuccess,
   [Types.START_ADD_RADIO]: startAddRadio,
   [Types.SUCCESS_ADD_RADIO]: SuccessAddRadio,
   [Types.ERROR_ADD_RADIO]: ErrorAddRadio

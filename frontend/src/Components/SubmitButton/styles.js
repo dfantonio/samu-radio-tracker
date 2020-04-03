@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
 
 export default makeStyles(theme => ({
   root: {
@@ -14,6 +14,12 @@ export default makeStyles(theme => ({
     backgroundColor: green[500],
     '&:hover': {
       backgroundColor: green[700]
+    }
+  },
+  buttonError: {
+    backgroundColor: red[600],
+    '&:hover': {
+      backgroundColor: red[800]
     }
   },
   buttonProgress: {

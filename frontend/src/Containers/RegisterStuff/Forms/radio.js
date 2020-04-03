@@ -9,11 +9,12 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
-export default function Radio({ onChange, status, payload }) {
+export default function Radio({ onChange, status, payload, errors }) {
+  const { serialNumber, issi, patrimonio } = errors;
+
   return (
     <>
       <TextField
-        required
         fullWidth
         name="serialNumber"
         id="serialNumber"
@@ -21,6 +22,8 @@ export default function Radio({ onChange, status, payload }) {
         variant="outlined"
         onChange={onChange}
         inputProps={{ maxLength: 7 }}
+        error={!!serialNumber}
+        helperText={serialNumber}
       />
       <TextField
         fullWidth
@@ -30,6 +33,8 @@ export default function Radio({ onChange, status, payload }) {
         variant="outlined"
         onChange={onChange}
         inputProps={{ maxLength: 7 }}
+        error={!!issi}
+        helperText={issi}
       />
       <TextField
         fullWidth
@@ -39,6 +44,8 @@ export default function Radio({ onChange, status, payload }) {
         variant="outlined"
         onChange={onChange}
         inputProps={{ maxLength: 6 }}
+        error={!!patrimonio}
+        helperText={patrimonio}
       />
       <FormControl variant="outlined" fullWidth>
         <InputLabel id="demo-simple-select-label">Status</InputLabel>
@@ -72,10 +79,12 @@ export default function Radio({ onChange, status, payload }) {
 Radio.propTypes = {
   onChange: PropTypes.func.isRequired,
   status: PropTypes.array,
-  payload: PropTypes.object
+  payload: PropTypes.object,
+  errors: PropTypes.object
 };
 
 Radio.defaultProps = {
   status: [],
-  payload: {}
+  payload: {},
+  errors: {}
 };

@@ -5,11 +5,12 @@ import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 import PropTypes from 'prop-types';
 
-export default function SubmitButton({ loading, success, onClick }) {
+export default function SubmitButton({ loading, success, error, onClick }) {
   const classes = useStyles();
 
   const buttonClassname = clsx({
-    [classes.buttonSuccess]: success
+    [classes.buttonSuccess]: success,
+    [classes.buttonError]: error
   });
 
   return (
@@ -35,10 +36,12 @@ export default function SubmitButton({ loading, success, onClick }) {
 SubmitButton.propTypes = {
   loading: PropTypes.bool,
   success: PropTypes.bool,
+  error: PropTypes.bool,
   onClick: PropTypes.func.isRequired
 };
 
 SubmitButton.defaultProps = {
   success: false,
-  loading: false
+  loading: false,
+  error: false
 };
