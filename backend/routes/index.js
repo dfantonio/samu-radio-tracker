@@ -2,11 +2,11 @@ const { sequelize } = require('../models');
 const routes = require('express').Router();
 const radios = require('./radios');
 const status = require('./status');
-const register = require('./register');
+const baterias = require('./baterias');
 
 routes.use('/radios', radios);
 routes.use('/status', status);
-routes.use('/register', register);
+routes.use('/baterias', baterias);
 
 routes.get('/', (req, res) =>
   sequelize
