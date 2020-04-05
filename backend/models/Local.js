@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       nome: {
         type: DataTypes.STRING,
         validate: {
-          min: {
-            args: 3,
-            msg: 'nome: O campo deve possuir no mínimo 3 caracteres',
+          len: {
+            args: [3, 20],
+            msg: 'nome: O campo deve possuir entre 3 e 20 caracteres',
           },
         },
       },

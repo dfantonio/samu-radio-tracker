@@ -7,12 +7,12 @@ const editLocal = async (req, res) => {
 
   try {
     const response = await Local.findByPk(id_local).then((local) =>
-      local.update(req.body)
+      local.destroy()
     );
 
     res.status(200).send(response);
   } catch (err) {
-    res.status(412).send('Não é possível editar este local');
+    res.status(412).send('Não é possível deletar este local');
   }
 };
 

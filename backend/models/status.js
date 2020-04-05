@@ -4,12 +4,20 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_status: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
       },
-      status: DataTypes.STRING(20)
+      status: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [3, 20],
+            msg: 'status: O status deve possuir entre 3 e 20 caracteres',
+          },
+        },
+      },
     },
     {
-      freezeTableName: true
+      freezeTableName: true,
     }
   );
 
