@@ -16,11 +16,25 @@ const Home = () => {
   const [payload, setPayload] = useState({});
   const dispatch = useDispatch();
   const { status } = useSelector(state => state.user);
-  const { errors, hasError, hasSuccess } = useSelector(state => state.register);
+  const { errors, hasErrors, hasSuccess } = useSelector(
+    state => state.register
+  );
   const { loading } = !!useSelector(state => state.loading);
 
   const handleButtonClick = () => {
-    dispatch(registerCreators.startAddRadio(payload));
+    switch (userChoose) {
+      case 1:
+        dispatch(registerCreators.startAddRadio(payload));
+        break;
+
+      case 2:
+        dispatch(registerCreators.startAddBattery(payload));
+        break;
+
+      case 3:
+        dispatch(registerCreators.startAddLocal(payload));
+        break;
+    }
   };
 
   useEffect(() => {
@@ -30,6 +44,7 @@ const Home = () => {
   useEffect(() => {
     setPayload({});
     dispatch(userCreators.startGetStatus());
+    if (hasSuccess) dispatch(registerCreators.clearSuccess());
   }, [userChoose]);
 
   function handleInputChange(event) {
@@ -61,8 +76,15 @@ const Home = () => {
         errors={errors}
       />
     ),
-    2: <Battery onChange={handleInputChange} />,
-    3: <Place onChange={handleInputChange} />
+    2: (
+      <Battery
+        onChange={handleInputChange}
+        status={status}
+        payload={payload}
+        errors={errors}
+      />
+    ),
+    3: <Place onChange={handleInputChange} errors={errors} />
   };
 
   return (
@@ -89,7 +111,7 @@ const Home = () => {
           {inputs[userChoose]}
         </Form>
         <SubmitButton
-          error={hasError}
+          error={hasErrors}
           loading={loading}
           success={hasSuccess}
           onClick={handleButtonClick}

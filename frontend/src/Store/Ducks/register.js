@@ -6,11 +6,17 @@ export const { Types, Creators } = createActions({
   clearSuccess: [],
   startAddRadio: ['data'],
   SuccessAddRadio: [],
-  ErrorAddRadio: ['errors']
+  ErrorAddRadio: ['errors'],
+  startAddBattery: ['data'],
+  SuccessAddBattery: [],
+  ErrorAddBattery: ['errors'],
+  startAddLocal: ['data'],
+  SuccessAddLocal: [],
+  ErrorAddLocal: ['errors']
 });
 
 const initialState = {
-  hasError: false,
+  hasErrors: false,
   hasSuccess: false,
   errors: {
     serialNumber: '',
@@ -25,15 +31,16 @@ function clearSuccess(state) {
 }
 
 function addRegisterErrors(state, { errors }) {
-  const hasErrors = Object.values(state.errors).some(e => e);
+  const newErrors = {
+    ...state.errors,
+    ...errors
+  };
+  const hasErrors = Object.values(newErrors).some(e => !!e);
 
   return {
     ...state,
     hasErrors,
-    errors: {
-      ...state.errors,
-      ...errors
-    }
+    errors: newErrors
   };
 }
 
@@ -42,11 +49,35 @@ function startAddRadio(state) {
 }
 
 function SuccessAddRadio(state) {
-  return { ...state, hasSuccess: true, hasError: false };
+  return { ...state, hasSuccess: true, hasErrors: false };
 }
 
 function ErrorAddRadio(state, { errors }) {
-  return { ...state, hasError: true, errors: { ...state.errors, ...errors } };
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
+}
+
+function startAddBattery(state) {
+  return { ...state };
+}
+
+function SuccessAddBattery(state) {
+  return { ...state, hasSuccess: true, hasErrors: false };
+}
+
+function ErrorAddBattery(state, { errors }) {
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
+}
+
+function startAddLocal(state) {
+  return { ...state };
+}
+
+function SuccessAddLocal(state) {
+  return { ...state, hasSuccess: true, hasErrors: false };
+}
+
+function ErrorAddLocal(state, { errors }) {
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
 }
 
 export const user = {
@@ -54,7 +85,13 @@ export const user = {
   [Types.CLEAR_SUCCESS]: clearSuccess,
   [Types.START_ADD_RADIO]: startAddRadio,
   [Types.SUCCESS_ADD_RADIO]: SuccessAddRadio,
-  [Types.ERROR_ADD_RADIO]: ErrorAddRadio
+  [Types.ERROR_ADD_RADIO]: ErrorAddRadio,
+  [Types.START_ADD_BATTERY]: startAddBattery,
+  [Types.SUCCESS_ADD_BATTERY]: SuccessAddBattery,
+  [Types.ERROR_ADD_BATTERY]: ErrorAddBattery,
+  [Types.START_ADD_LOCAL]: startAddLocal,
+  [Types.SUCCESS_ADD_LOCAL]: SuccessAddLocal,
+  [Types.ERROR_ADD_LOCAL]: ErrorAddLocal
 };
 
 export default createReducer(initialState, user);

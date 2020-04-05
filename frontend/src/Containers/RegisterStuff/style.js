@@ -23,6 +23,7 @@ export const Form = styled.form`
   margin-top: 50px;
   align-self: start;
   min-height: 400px;
+  width: 100%;
 
   & .MuiFormControl-root {
     margin: 10px 0px;

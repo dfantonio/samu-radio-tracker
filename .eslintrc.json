@@ -27,7 +27,6 @@
   },
   "plugins": ["react", "import", "prettier"],
   "rules": {
-    "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
     "no-unused-vars": "warn",
