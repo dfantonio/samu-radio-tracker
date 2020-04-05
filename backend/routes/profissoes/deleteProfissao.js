@@ -6,7 +6,7 @@ const editProfissao = async (req, res) => {
   const { id_profissao } = req.body;
 
   try {
-    const response = await Profissao.findByPk(id_profissao).then((profissao) =>
+    const response = await Profissao.findByPk(id_profissao).then(profissao =>
       profissao.destroy()
     );
 

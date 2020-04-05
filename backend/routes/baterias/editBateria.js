@@ -6,7 +6,7 @@ const editBateria = async (req, res) => {
   const { id_bateria } = req.body;
 
   try {
-    const response = await Bateria.findByPk(id_bateria).then((bateria) =>
+    const response = await Bateria.findByPk(id_bateria).then(bateria =>
       bateria.update(req.body)
     );
 

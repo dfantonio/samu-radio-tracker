@@ -11,7 +11,7 @@ const validateBody = (payload, validators) => {
   if (Object.keys(errors).length > 0) throw { errors };
 };
 
-const uniqueError = (string) => {
+const uniqueError = string => {
   const param = string.split('.')[1].split('_')[0];
 
   return { [param]: 'Já há um campo com este valor' };
@@ -22,8 +22,8 @@ const uniqueError = (string) => {
  * @description Função que normaliza o objeto de erro do Sequelize
  * @param {object} payload
  */
-const ModelSequelizeErrors = (payload) => {
-  const errors = payload.map((item) => {
+const ModelSequelizeErrors = payload => {
+  const errors = payload.map(item => {
     const array = item.message.split(': ');
 
     if (!array[1]) return uniqueError(item.message);

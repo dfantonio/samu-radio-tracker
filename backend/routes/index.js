@@ -18,7 +18,7 @@ routes.get('/', (req, res) =>
     .then(() => {
       res.send('Connection has been established successfully.');
     })
-    .catch((err) => {
+    .catch(err => {
       res.send('Unable to connect to the database:', err);
     })
 );
