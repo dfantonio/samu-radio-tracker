@@ -1,6 +1,10 @@
 import { all } from 'redux-saga/effects';
 import SagaLoader from './SagaLoader';
 import SagaGetStatus from './SagaGetStatus';
+import SagaGetRadios from './SagaGetRadios';
+import SagaGetLocais from './SagaGetLocais';
+import SagaGetBaterias from './SagaGetBaterias';
+import SagaGetProfissoes from './SagaGetProfissoes';
 import SagaRegisterRadio from './SagaRegisterRadio';
 import SagaRegisterBattery from './SagaRegisterBattery';
 import SagaRegisterProfissao from './SagaRegisterProfissao';
@@ -13,6 +17,10 @@ export default function* sagas() {
     SagaGetStatus(),
     SagaRegisterBattery(),
     SagaRegisterProfissao(),
-    SagaRegisterLocal()
+    SagaRegisterLocal(),
+    SagaGetRadios(),
+    SagaGetBaterias(),
+    SagaGetLocais(),
+    SagaGetProfissoes(),
   ]);
 }

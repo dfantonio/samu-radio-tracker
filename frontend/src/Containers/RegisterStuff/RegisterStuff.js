@@ -9,18 +9,16 @@ import SubmitButton from '../../Components/SubmitButton/SubmitButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyErrors } from '../../Helpers';
 import { Creators as registerCreators } from '../../Store/Ducks/register';
-import { Creators as userCreators } from '../../Store/Ducks/user';
+import PropTypes from 'prop-types';
+import { withStore } from '../../HigherOrder';
 
-const Home = () => {
+const RegisterStuff = ({ status }) => {
   const classes = useStyles();
   const [userChoose, setUserChoose] = useState(1);
   const [payload, setPayload] = useState({});
   const dispatch = useDispatch();
-  const { status } = useSelector(state => state.user);
-  const { errors, hasErrors, hasSuccess } = useSelector(
-    state => state.register
-  );
-  const { loading } = !!useSelector(state => state.loading);
+  const { errors, hasErrors, hasSuccess } = useSelector((state) => state.register);
+  const { loading } = !!useSelector((state) => state.loading);
 
   const handleButtonClick = () => {
     switch (userChoose) {
@@ -50,7 +48,6 @@ const Home = () => {
     setPayload({});
 
     dispatch(registerCreators.addRegisterErrors(emptyErrors(errors)));
-    dispatch(userCreators.startGetStatus());
     if (hasSuccess) dispatch(registerCreators.clearSuccess());
   }, [userChoose]);
 
@@ -61,12 +58,11 @@ const Home = () => {
 
     if (hasSuccess) dispatch(registerCreators.clearSuccess());
 
-    if (errors[name])
-      dispatch(registerCreators.addRegisterErrors({ [name]: '' }));
+    if (errors[name]) dispatch(registerCreators.addRegisterErrors({ [name]: '' }));
 
     setPayload({
       ...payload,
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -75,24 +71,10 @@ const Home = () => {
   }
 
   const inputs = {
-    1: (
-      <Radio
-        onChange={handleInputChange}
-        status={status}
-        payload={payload}
-        errors={errors}
-      />
-    ),
-    2: (
-      <Battery
-        onChange={handleInputChange}
-        status={status}
-        payload={payload}
-        errors={errors}
-      />
-    ),
+    1: <Radio onChange={handleInputChange} status={status} payload={payload} errors={errors} />,
+    2: <Battery onChange={handleInputChange} status={status} payload={payload} errors={errors} />,
     3: <Place onChange={handleInputChange} errors={errors} />,
-    4: <Profissao onChange={handleInputChange} errors={errors} />
+    4: <Profissao onChange={handleInputChange} errors={errors} />,
   };
 
   return (
@@ -132,4 +114,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withStore(RegisterStuff);
+
+RegisterStuff.propTypes = {
+  status: PropTypes.array.isRequired,
+};

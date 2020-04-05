@@ -1,5 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { Types as userTypes, Creators as userCreators } from '../Ducks/user';
+import { Types as userTypes, Creators as userCreators } from '../Ducks/lists';
 import { getStatus as getStatusRequest } from '../Services';
 
 export function* getStatus() {
