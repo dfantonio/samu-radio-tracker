@@ -12,7 +12,10 @@ export const { Types, Creators } = createActions({
   ErrorAddBattery: ['errors'],
   startAddLocal: ['data'],
   SuccessAddLocal: [],
-  ErrorAddLocal: ['errors']
+  ErrorAddLocal: ['errors'],
+  startAddProfissao: ['data'],
+  SuccessAddProfissao: [],
+  ErrorAddProfissao: ['errors']
 });
 
 const initialState = {
@@ -20,6 +23,8 @@ const initialState = {
   hasSuccess: false,
   errors: {
     serialNumber: '',
+    sigla: '',
+    nome: '',
     issi: '',
     patrimonio: ''
   }
@@ -80,6 +85,18 @@ function ErrorAddLocal(state, { errors }) {
   return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
 }
 
+function startAddProfissao(state) {
+  return { ...state };
+}
+
+function SuccessAddProfissao(state) {
+  return { ...state, hasSuccess: true, hasErrors: false };
+}
+
+function ErrorAddProfissao(state, { errors }) {
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
+}
+
 export const user = {
   [Types.ADD_REGISTER_ERRORS]: addRegisterErrors,
   [Types.CLEAR_SUCCESS]: clearSuccess,
@@ -91,7 +108,10 @@ export const user = {
   [Types.ERROR_ADD_BATTERY]: ErrorAddBattery,
   [Types.START_ADD_LOCAL]: startAddLocal,
   [Types.SUCCESS_ADD_LOCAL]: SuccessAddLocal,
-  [Types.ERROR_ADD_LOCAL]: ErrorAddLocal
+  [Types.ERROR_ADD_LOCAL]: ErrorAddLocal,
+  [Types.START_ADD_PROFISSAO]: startAddProfissao,
+  [Types.SUCCESS_ADD_PROFISSAO]: SuccessAddProfissao,
+  [Types.ERROR_ADD_PROFISSAO]: ErrorAddProfissao
 };
 
 export default createReducer(initialState, user);

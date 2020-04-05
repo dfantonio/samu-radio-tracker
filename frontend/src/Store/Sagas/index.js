@@ -3,6 +3,7 @@ import SagaLoader from './SagaLoader';
 import SagaGetStatus from './SagaGetStatus';
 import SagaRegisterRadio from './SagaRegisterRadio';
 import SagaRegisterBattery from './SagaRegisterBattery';
+import SagaRegisterProfissao from './SagaRegisterProfissao';
 import SagaRegisterLocal from './SagaRegisterLocal';
 
 export default function* sagas() {
@@ -11,6 +12,7 @@ export default function* sagas() {
     SagaRegisterRadio(),
     SagaGetStatus(),
     SagaRegisterBattery(),
+    SagaRegisterProfissao(),
     SagaRegisterLocal()
   ]);
 }

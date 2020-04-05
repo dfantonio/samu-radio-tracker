@@ -4,9 +4,10 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useStyles, { Form } from './style';
-import { Radio, Battery, Place } from './Forms';
+import { Radio, Battery, Place, Profissao } from './Forms';
 import SubmitButton from '../../Components/SubmitButton/SubmitButton';
 import { useDispatch, useSelector } from 'react-redux';
+import { emptyErrors } from '../../Helpers';
 import { Creators as registerCreators } from '../../Store/Ducks/register';
 import { Creators as userCreators } from '../../Store/Ducks/user';
 
@@ -34,6 +35,10 @@ const Home = () => {
       case 3:
         dispatch(registerCreators.startAddLocal(payload));
         break;
+
+      case 4:
+        dispatch(registerCreators.startAddProfissao(payload));
+        break;
     }
   };
 
@@ -43,6 +48,8 @@ const Home = () => {
 
   useEffect(() => {
     setPayload({});
+
+    dispatch(registerCreators.addRegisterErrors(emptyErrors(errors)));
     dispatch(userCreators.startGetStatus());
     if (hasSuccess) dispatch(registerCreators.clearSuccess());
   }, [userChoose]);
@@ -84,7 +91,8 @@ const Home = () => {
         errors={errors}
       />
     ),
-    3: <Place onChange={handleInputChange} errors={errors} />
+    3: <Place onChange={handleInputChange} errors={errors} />,
+    4: <Profissao onChange={handleInputChange} errors={errors} />
   };
 
   return (
@@ -105,6 +113,9 @@ const Home = () => {
           </Button>
           <Button onClick={() => setUserChoose(3)} variant={isChoosen(3)}>
             Local
+          </Button>
+          <Button onClick={() => setUserChoose(4)} variant={isChoosen(4)}>
+            Profissão
           </Button>
         </ButtonGroup>
         <Form noValidate autoComplete="off">

@@ -1,2 +1,2 @@
-export { addRadio, addBattery, addLocal } from './register';
+export { addRadio, addBattery, addLocal, addProfissao } from './register';
 export { getStatus } from './user';
