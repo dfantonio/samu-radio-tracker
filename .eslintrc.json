@@ -6,7 +6,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -25,13 +25,14 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "import", "prettier"],
+  "plugins": ["prettier", "react", "import"],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
     "no-unused-vars": "warn",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    "prettier/prettier": ["error"],
     "import/extensions": ["off", "never"],
     "import/no-unresolved": 2,
     "class-methods-use-this": ["off"],
