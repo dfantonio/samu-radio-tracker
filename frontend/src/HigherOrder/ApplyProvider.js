@@ -11,5 +11,6 @@ export default WrappedComponent => {
       </PersistGate>
     </Provider>
   );
+
   return hocComponent;
 };

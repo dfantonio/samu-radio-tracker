@@ -5,6 +5,7 @@ import App from '../App';
 describe('App Test', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
+
     window.comPontos = { start: () => {} };
     ReactDOM.render(<App />, div);
 
