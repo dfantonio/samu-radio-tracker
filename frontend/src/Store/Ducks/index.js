@@ -16,5 +16,5 @@ export default history =>
     lists: resettable(lists),
     session: resettable(session),
     router: connectRouter(history),
-    register: resettable(register)
+    register: resettable(register),
   });

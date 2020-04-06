@@ -6,9 +6,7 @@ const editLocal = async (req, res) => {
   const { id_local } = req.body;
 
   try {
-    const response = await Local.findByPk(id_local).then(local =>
-      local.destroy()
-    );
+    const response = await Local.findByPk(id_local).then(local => local.destroy());
 
     res.status(200).send(response);
   } catch (err) {

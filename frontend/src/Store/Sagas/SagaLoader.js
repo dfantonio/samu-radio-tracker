@@ -35,7 +35,7 @@ export function* SagaLoader() {
     takeLatest(registerTypes.START_ADD_RADIO, addLoader),
     takeLatest(registerTypes.SUCCESS_ADD_RADIO, removeLoader),
     takeLatest(registerTypes.ERROR_ADD_RADIO, removeLoader),
-    ...GetLists
+    ...GetLists,
   ]);
 }
 

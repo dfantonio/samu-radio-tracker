@@ -1,12 +1,12 @@
 import { createReducer, createActions } from 'reduxsauce';
 
 export const { Types, Creators } = createActions({
-  successSetToken: ['creationToken', 'sessionToken']
+  successSetToken: ['creationToken', 'sessionToken'],
 });
 /* Initial State */
 const initialState = {
   creationToken: '',
-  sessionToken: ''
+  sessionToken: '',
 };
 
 /* Reducer */
@@ -14,12 +14,12 @@ function successSetToken(state, { creationToken = '', sessionToken = '' }) {
   return {
     ...state,
     creationToken,
-    sessionToken
+    sessionToken,
   };
 }
 
 export const session = {
-  [Types.SUCCESS_SET_TOKEN]: successSetToken
+  [Types.SUCCESS_SET_TOKEN]: successSetToken,
 };
 
 export default createReducer(initialState, session);

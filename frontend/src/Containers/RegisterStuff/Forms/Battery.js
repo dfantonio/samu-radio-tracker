@@ -47,11 +47,11 @@ Battery.propTypes = {
   onChange: PropTypes.func.isRequired,
   status: PropTypes.array,
   payload: PropTypes.object,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 Battery.defaultProps = {
   status: [],
   payload: {},
-  errors: {}
+  errors: {},
 };

@@ -6,9 +6,7 @@ const editStatus = async (req, res) => {
   const { id_status } = req.body;
 
   try {
-    const response = await Status.findByPk(id_status).then(status =>
-      status.destroy()
-    );
+    const response = await Status.findByPk(id_status).then(status => status.destroy());
 
     res.status(200).send(response);
   } catch (err) {

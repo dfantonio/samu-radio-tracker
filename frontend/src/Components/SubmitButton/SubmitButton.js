@@ -10,7 +10,7 @@ export default function SubmitButton({ loading, success, error, onClick }) {
 
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
-    [classes.buttonError]: error
+    [classes.buttonError]: error,
   });
 
   return (
@@ -25,9 +25,7 @@ export default function SubmitButton({ loading, success, error, onClick }) {
         >
           Salvar
         </Button>
-        {loading && (
-          <CircularProgress size={24} className={classes.buttonProgress} />
-        )}
+        {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
       </div>
     </div>
   );
@@ -37,11 +35,11 @@ SubmitButton.propTypes = {
   loading: PropTypes.bool,
   success: PropTypes.bool,
   error: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 SubmitButton.defaultProps = {
   success: false,
   loading: false,
-  error: false
+  error: false,
 };

@@ -1,18 +1,9 @@
 const { Radio } = require('../../models');
-const {
-  validateBody,
-  ModelSequelizeErrors,
-} = require('../../utils/validators/general');
+const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/general');
 
 const addRadio = async (req, res) => {
   validateBody(req.body, ['serialNumber', 'patrimonio', 'issi']);
-  const {
-    serialNumber,
-    issi,
-    antena = false,
-    patrimonio,
-    status = 3,
-  } = req.body;
+  const { serialNumber, issi, antena = false, patrimonio, status = 3 } = req.body;
 
   try {
     const response = await Radio.create({

@@ -35,9 +35,9 @@ export default function Local({ onChange, errors }) {
 
 Local.propTypes = {
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 Local.defaultProps = {
-  errors: {}
+  errors: {},
 };

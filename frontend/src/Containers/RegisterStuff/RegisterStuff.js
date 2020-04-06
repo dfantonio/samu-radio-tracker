@@ -17,8 +17,8 @@ const RegisterStuff = ({ status }) => {
   const [userChoose, setUserChoose] = useState(1);
   const [payload, setPayload] = useState({});
   const dispatch = useDispatch();
-  const { errors, hasErrors, hasSuccess } = useSelector((state) => state.register);
-  const { loading } = !!useSelector((state) => state.loading);
+  const { errors, hasErrors, hasSuccess } = useSelector(state => state.register);
+  const { loading } = !!useSelector(state => state.loading);
 
   const handleButtonClick = () => {
     switch (userChoose) {
@@ -71,8 +71,22 @@ const RegisterStuff = ({ status }) => {
   }
 
   const inputs = {
-    1: <Radio onChange={handleInputChange} status={status} payload={payload} errors={errors} />,
-    2: <Battery onChange={handleInputChange} status={status} payload={payload} errors={errors} />,
+    1: (
+      <Radio
+        onChange={handleInputChange}
+        status={status}
+        payload={payload}
+        errors={errors}
+      />
+    ),
+    2: (
+      <Battery
+        onChange={handleInputChange}
+        status={status}
+        payload={payload}
+        errors={errors}
+      />
+    ),
     3: <Place onChange={handleInputChange} errors={errors} />,
     4: <Profissao onChange={handleInputChange} errors={errors} />,
   };

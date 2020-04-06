@@ -1,8 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import {
-  Types as registerTypes,
-  Creators as registerCreators
-} from '../Ducks/register';
+import { Types as registerTypes, Creators as registerCreators } from '../Ducks/register';
 import { addLocal } from '../Services';
 
 export function* registerLocal({ data }) {

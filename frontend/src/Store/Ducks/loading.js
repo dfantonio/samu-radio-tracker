@@ -15,12 +15,12 @@ const stopLoading = state => {
 /* Action Creators start */
 export const { Types, Creators } = createActions({
   startLoading: null,
-  stopLoading: null
+  stopLoading: null,
 });
 
 export const loading = {
   [Types.START_LOADING]: startLoading,
-  [Types.STOP_LOADING]: stopLoading
+  [Types.STOP_LOADING]: stopLoading,
 };
 
 export default createReducer(initialState, loading);

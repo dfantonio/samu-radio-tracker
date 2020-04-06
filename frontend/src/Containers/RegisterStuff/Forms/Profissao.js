@@ -24,9 +24,9 @@ export default function Profissao({ onChange, errors }) {
 
 Profissao.propTypes = {
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 Profissao.defaultProps = {
-  errors: {}
+  errors: {},
 };

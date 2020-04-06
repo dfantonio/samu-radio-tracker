@@ -4,7 +4,7 @@ export const emptyErrors = (errors = []) => {
   return properties.reduce((obj, item) => {
     return {
       ...obj,
-      [item]: "",
+      [item]: '',
     };
   }, {});
 };

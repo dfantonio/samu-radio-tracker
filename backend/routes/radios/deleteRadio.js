@@ -6,9 +6,7 @@ const editRadio = async (req, res) => {
   const { id_radio } = req.body;
 
   try {
-    const response = await Radio.findByPk(id_radio).then(radio =>
-      radio.destroy()
-    );
+    const response = await Radio.findByPk(id_radio).then(radio => radio.destroy());
 
     res.status(200).send(response);
   } catch (err) {

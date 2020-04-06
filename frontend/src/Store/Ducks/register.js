@@ -15,7 +15,7 @@ export const { Types, Creators } = createActions({
   ErrorAddLocal: ['errors'],
   startAddProfissao: ['data'],
   SuccessAddProfissao: [],
-  ErrorAddProfissao: ['errors']
+  ErrorAddProfissao: ['errors'],
 });
 
 const initialState = {
@@ -26,8 +26,8 @@ const initialState = {
     sigla: '',
     nome: '',
     issi: '',
-    patrimonio: ''
-  }
+    patrimonio: '',
+  },
 };
 
 /* Reducers */
@@ -38,14 +38,14 @@ function clearSuccess(state) {
 function addRegisterErrors(state, { errors }) {
   const newErrors = {
     ...state.errors,
-    ...errors
+    ...errors,
   };
   const hasErrors = Object.values(newErrors).some(e => !!e);
 
   return {
     ...state,
     hasErrors,
-    errors: newErrors
+    errors: newErrors,
   };
 }
 
@@ -111,7 +111,7 @@ export const user = {
   [Types.ERROR_ADD_LOCAL]: ErrorAddLocal,
   [Types.START_ADD_PROFISSAO]: startAddProfissao,
   [Types.SUCCESS_ADD_PROFISSAO]: SuccessAddProfissao,
-  [Types.ERROR_ADD_PROFISSAO]: ErrorAddProfissao
+  [Types.ERROR_ADD_PROFISSAO]: ErrorAddProfissao,
 };
 
 export default createReducer(initialState, user);

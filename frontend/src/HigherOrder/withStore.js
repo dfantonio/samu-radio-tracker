@@ -45,7 +45,14 @@ export default function withStore(WrappedComponent) {
     }
 
     render() {
-      const { isFetchingLists, status, radios, baterias, locais, profissoes } = this.props;
+      const {
+        isFetchingLists,
+        status,
+        radios,
+        baterias,
+        locais,
+        profissoes,
+      } = this.props;
 
       if (!isFetchingLists && !status.length) this.updateStatus();
       if (!isFetchingLists && !radios.length) this.updateRadios();
@@ -53,11 +60,7 @@ export default function withStore(WrappedComponent) {
       if (!isFetchingLists && !locais.length) this.updateLocais();
       if (!isFetchingLists && !profissoes.length) this.updateProfissoes();
 
-      return (
-        <WrappedComponent
-          {...this.props}
-        />
-      );
+      return <WrappedComponent {...this.props} />;
     }
   }
 

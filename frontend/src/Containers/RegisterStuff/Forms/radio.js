@@ -66,9 +66,7 @@ export default function Radio({ onChange, status, payload, errors }) {
       </FormControl>
       <FormGroup>
         <FormControlLabel
-          control={
-            <Checkbox onChange={onChange} name="antena" color="primary" />
-          }
+          control={<Checkbox onChange={onChange} name="antena" color="primary" />}
           label="Antena"
         />
       </FormGroup>
@@ -80,11 +78,11 @@ Radio.propTypes = {
   onChange: PropTypes.func.isRequired,
   status: PropTypes.array,
   payload: PropTypes.object,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 Radio.defaultProps = {
   status: [],
   payload: {},
-  errors: {}
+  errors: {},
 };

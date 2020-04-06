@@ -18,8 +18,8 @@ export const { Types, Creators } = createActions({
   successGetProfissoes: ['profissoes'],
   errorGetProfissoes: ['error'],
   errors: {
-    status: ''
-  }
+    status: '',
+  },
 });
 
 const initialState = {
@@ -27,7 +27,7 @@ const initialState = {
   radios: [],
   baterias: [],
   locais: [],
-  profissoes: []
+  profissoes: [],
 };
 
 /* Reducer */
@@ -81,7 +81,7 @@ export const lists = {
   [Types.SUCCESS_GET_LOCAIS]: successGetLocais,
   [Types.ERROR_GET_LOCAIS]: errorGetLocais,
   [Types.SUCCESS_GET_PROFISSOES]: successGetProfissoes,
-  [Types.ERROR_GET_PROFISSOES]: errorGetProfissoes
+  [Types.ERROR_GET_PROFISSOES]: errorGetProfissoes,
 };
 
 export default createReducer(initialState, lists);

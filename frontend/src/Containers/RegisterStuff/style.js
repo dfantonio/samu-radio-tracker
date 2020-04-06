@@ -6,17 +6,17 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   form: {
     marginTop: theme.spacing(8),
     '& .MuiTextField-root': {
-      margin: theme.spacing(1) + 'px' + ' 0px'
-    }
+      margin: theme.spacing(1) + 'px' + ' 0px',
+    },
   },
   contents: {
-    display: 'contents'
-  }
+    display: 'contents',
+  },
 }));
 
 export const Form = styled.form`

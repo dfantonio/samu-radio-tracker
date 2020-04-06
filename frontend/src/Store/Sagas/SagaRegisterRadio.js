@@ -1,8 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import {
-  Types as registerTypes,
-  Creators as registerCreators
-} from '../Ducks/register';
+import { Types as registerTypes, Creators as registerCreators } from '../Ducks/register';
 import { addRadio } from '../Services';
 
 export function* registerRadio({ data }) {

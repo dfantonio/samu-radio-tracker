@@ -12,7 +12,7 @@ import storage from 'redux-persist/lib/storage/session';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['session']
+  whitelist: ['session'],
 };
 
 const sagaMiddleware = createSagaMiddleware();

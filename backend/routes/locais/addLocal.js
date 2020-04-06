@@ -1,8 +1,5 @@
 const { Local } = require('../../models');
-const {
-  validateBody,
-  ModelSequelizeErrors,
-} = require('../../utils/validators/general');
+const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/general');
 
 const addLocal = async (req, res) => {
   validateBody(req.body, ['nome', 'sigla']);

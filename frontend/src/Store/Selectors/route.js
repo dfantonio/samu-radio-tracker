@@ -17,43 +17,41 @@ function getGrid(pathname, name) {
     {
       '/': {
         header: {
-          displayLogo: true
+          displayLogo: true,
         },
-        footer: {}
+        footer: {},
       },
       '/codeconfirm': {
         header: {
-          displayLogo: true
+          displayLogo: true,
         },
-        footer: {}
+        footer: {},
       },
       '/register': {
         header: {
           displayLogo: true,
-          title: name
-            ? ['Fala aí, ', name + '!']
-            : ['Fala aí! \nSeja ', 'bem-vindo!']
+          title: name ? ['Fala aí, ', name + '!'] : ['Fala aí! \nSeja ', 'bem-vindo!'],
         },
-        footer: {}
+        footer: {},
       },
       '/success': {
         header: {
-          displayLogo: true
+          displayLogo: true,
         },
-        footer: {}
+        footer: {},
       },
       '/failure': {
         header: {
-          displayLogo: true
+          displayLogo: true,
         },
-        footer: {}
+        footer: {},
       },
       '/alreadyregistered': {
         header: {
-          displayLogo: true
+          displayLogo: true,
         },
-        footer: {}
-      }
+        footer: {},
+      },
     }[pathname] || {}
   );
 }

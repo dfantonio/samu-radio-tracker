@@ -1,8 +1,5 @@
 const { Profissao } = require('../../models');
-const {
-  validateBody,
-  ModelSequelizeErrors,
-} = require('../../utils/validators/general');
+const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/general');
 
 const addProfissao = async (req, res) => {
   validateBody(req.body, ['nome']);

@@ -6,5 +6,5 @@ module.exports = {
   database: process.env.BACKEND_DB_NAME,
   port: process.env.BACKEND_DB_PORT,
   host: process.env.BACKEND_DB_HOST,
-  dialect: 'mysql'
+  dialect: 'mysql',
 };
