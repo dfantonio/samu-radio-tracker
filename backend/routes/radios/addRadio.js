@@ -1,4 +1,4 @@
-const { Radio } = require('../../models');
+const { Bem } = require('../../models');
 const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/general');
 
 const addRadio = async (req, res) => {
@@ -6,11 +6,12 @@ const addRadio = async (req, res) => {
   const { serialNumber, issi, antena = false, patrimonio, status = 3 } = req.body;
 
   try {
-    const response = await Radio.create({
-      serial_number: serialNumber,
+    const response = await Bem.create({
+      numero_serial: serialNumber,
+      tipo_id: 1, // Código do rádio
       patrimonio,
       antena: !!antena,
-      status,
+      status_id: status, // Código para disponível
       issi,
     });
 

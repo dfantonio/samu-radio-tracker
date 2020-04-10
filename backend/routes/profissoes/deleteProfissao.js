@@ -2,13 +2,11 @@ const { Profissao } = require('../../models');
 const { validateBody } = require('../../utils/validators/general');
 
 const editProfissao = async (req, res) => {
-  validateBody(req.body, ['id_profissao']);
-  const { id_profissao } = req.body;
+  validateBody(req.body, ['id']);
+  const { id } = req.body;
 
   try {
-    const response = await Profissao.findByPk(id_profissao).then(profissao =>
-      profissao.destroy()
-    );
+    const response = await Profissao.findByPk(id).then(profissao => profissao.destroy());
 
     res.status(200).send(response);
   } catch (err) {

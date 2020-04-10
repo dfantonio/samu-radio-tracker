@@ -3,12 +3,23 @@ const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/g
 
 const addLocal = async (req, res) => {
   validateBody(req.body, ['nome', 'sigla']);
-  const { nome, sigla } = req.body;
+  const {
+    nome,
+    sigla,
+    limite_radios,
+    limite_baterias,
+    limite_carregador,
+    descricao,
+  } = req.body;
 
   try {
     const response = await Local.create({
       sigla: sigla.toUpperCase(),
       nome,
+      limite_radios,
+      limite_baterias,
+      limite_carregador,
+      descricao: !!descricao,
     });
 
     res.status(201).send(response);

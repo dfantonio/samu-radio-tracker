@@ -39,6 +39,26 @@ module.exports = (sequelize, DataTypes) => {
       atualizado_em: {
         type: DataTypes.DATE,
       },
+      limite_radios: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 2,
+      },
+      limite_baterias: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 4,
+      },
+      limite_carregador: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
+      },
+      descricao: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
     },
     {
       tableName: 'locais',
