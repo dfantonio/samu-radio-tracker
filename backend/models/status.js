@@ -2,12 +2,15 @@ module.exports = (sequelize, DataTypes) => {
   const Status = sequelize.define(
     'Status',
     {
-      id_status: {
+      id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
       },
       status: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        unique: true,
         validate: {
           len: {
             args: [3, 20],
@@ -17,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      freezeTableName: true,
+      tableName: 'status',
     }
   );
 

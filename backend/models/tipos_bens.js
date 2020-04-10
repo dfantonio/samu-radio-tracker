@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Profissao = sequelize.define(
-    'Profissao',
+  const Tipos_bens = sequelize.define(
+    'Tipos_bens',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -10,18 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(20),
         allowNull: false,
         unique: true,
-        validate: {
-          len: {
-            args: [3, 20],
-            msg: 'nome: O nome deve possuir entre 3 e 20 caracteres',
-          },
-        },
       },
     },
     {
-      tableName: 'profissoes',
+      tableName: 'tipos_bens',
     }
   );
 
-  return Profissao;
+  return Tipos_bens;
 };
