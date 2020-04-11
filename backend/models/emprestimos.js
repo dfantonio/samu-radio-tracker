@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
       },
       local_id: {
@@ -57,6 +56,10 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'emprestimos',
     }
   );
+
+  Emprestimo.associate = function (models) {
+    Emprestimo.belongsTo(models.Bem, { foreignKey: 'bens_id' });
+  };
 
   return Emprestimo;
 };
