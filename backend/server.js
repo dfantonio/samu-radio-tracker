@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use('/', require('./routes'));
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
   console.log(`Server ativo na port ${PORT}.`);
 });
 
