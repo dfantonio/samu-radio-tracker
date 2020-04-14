@@ -26,10 +26,12 @@
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.39",
     "axios": "^0.19.0",
     "connected-react-router": "^6.5.2",
     "email-validator": "^2.0.4",
     "history": "^4.10.1",
+    "material-table": "^1.57.2",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-dom": "^16.13.1",
@@ -60,8 +62,6 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-syntax-jsx": "^7.2.0",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
