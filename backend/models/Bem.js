@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Bem.associate = function (models) {
-    Bem.hasMany(models.Bem, { foreignKey: 'id' });
+    Bem.belongsTo(models.Tipos_bens, { foreignKey: 'tipo_id' });
   };
 
   return Bem;

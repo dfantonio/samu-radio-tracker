@@ -59,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Emprestimo.associate = function (models) {
     Emprestimo.belongsTo(models.Bem, { foreignKey: 'bens_id' });
+    Emprestimo.belongsTo(models.Local, { foreignKey: 'local_id' });
   };
 
   return Emprestimo;
