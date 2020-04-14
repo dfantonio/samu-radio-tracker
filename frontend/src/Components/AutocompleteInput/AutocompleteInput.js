@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import PropTypes from 'prop-types';
 
 const AutocompleteInput = ({ array, onChange, renderLabel, name, placeholder }) => {
   const buildOnChange = (event, value) => {
-    const response = { target: { value: value.id, name } };
+    const { id } = value || {};
+
+    const response = { target: { value: id, name } };
 
     onChange(response);
   };
 
+  const [key, setKey] = useState(name);
+
+  useEffect(() => {
+    setKey(a => a + 1);
+  }, [array]);
+
   return (
     <Autocomplete
-      id="combo-box-demo"
+      key={key}
+      id={`Autocomplete-${name}`}
       options={array}
       // loading
       loadingText="Carregando..."
       onChange={buildOnChange}
       getOptionLabel={renderLabel}
-      name="AAA"
       noOptionsText="Sem opções"
       renderInput={params => (
         <TextField

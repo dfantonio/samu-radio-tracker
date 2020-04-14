@@ -4,7 +4,6 @@ import { Types as registerTypes } from '../Ducks/register';
 import { Types as userTypes } from '../Ducks/lists';
 
 export function* addLoader() {
-  console.log('entrei no loader');
   yield put(loading.startLoading());
 }
 
