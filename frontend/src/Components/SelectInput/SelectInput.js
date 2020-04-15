@@ -3,7 +3,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
+import useStyles from './styles';
 
 /**
  * @author Antônio Della Flora
@@ -25,17 +28,29 @@ const SelectInput = ({
   getId,
   placeholder,
   name,
+  error,
 }) => {
+  const classes = useStyles();
+
   return (
-    <FormControl variant="outlined" fullWidth>
+    <FormControl error={!!error} variant="outlined" fullWidth>
       <InputLabel id="Select-options">{placeholder}</InputLabel>
-      <Select name={name} label={placeholder} value={selected} onChange={onChange}>
-        {array.map(e => (
-          <MenuItem key={getId(e)} value={getId(e)}>
-            {renderLabel(e)}
-          </MenuItem>
-        ))}
-      </Select>
+      <Paper>
+        <Select
+          className={classes.select}
+          name={name}
+          label={placeholder}
+          value={selected}
+          onChange={onChange}
+        >
+          {array.map(e => (
+            <MenuItem key={getId(e)} value={getId(e)}>
+              {renderLabel(e)}
+            </MenuItem>
+          ))}
+        </Select>
+      </Paper>
+      <FormHelperText>{error}</FormHelperText>
     </FormControl>
   );
 };
@@ -48,6 +63,7 @@ SelectInput.propTypes = {
   placeholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
+  error: PropTypes.string,
 };
 
 SelectInput.defaultProps = {
@@ -57,6 +73,7 @@ SelectInput.defaultProps = {
   placeholder: '',
   selected: '',
   name: '',
+  error: '',
 };
 
 export default SelectInput;
