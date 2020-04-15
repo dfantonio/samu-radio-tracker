@@ -35,7 +35,7 @@ function Tabela({ data, isLoading, updateTable, onChange }) {
           icon: 'refresh',
           tooltip: 'Recarregar',
           isFreeAction: true,
-          onClick: () => updateTable(true),
+          onClick: updateTable,
         },
         {
           icon: 'done',

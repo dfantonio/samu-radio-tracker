@@ -63,7 +63,7 @@ SelectInput.propTypes = {
   placeholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 SelectInput.defaultProps = {
