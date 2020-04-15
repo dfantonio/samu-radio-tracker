@@ -3,21 +3,25 @@ import { ApplyProvider } from './HigherOrder';
 import Routes from './routes';
 import { Header } from './Components';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { readTheme, toggleTheme } from './Helpers';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+function themeColor() {
+  return readTheme() ? 'light' : 'dark';
+}
 
 const App = () => {
   const [theme, setTheme] = useState({
     palette: {
-      type: 'light',
+      type: themeColor(),
     },
   });
 
   const toggleDarkTheme = () => {
-    let newPaletteType = theme.palette.type === 'light' ? 'dark' : 'light';
-
+    toggleTheme();
     setTheme({
       palette: {
-        type: newPaletteType,
+        type: themeColor(),
       },
     });
   };
