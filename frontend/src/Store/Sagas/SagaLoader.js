@@ -1,7 +1,7 @@
 import { takeLatest, put, all } from 'redux-saga/effects';
 import { Creators as loading } from '../Ducks/loading';
 import { Types as registerTypes } from '../Ducks/register';
-import { Types as userTypes } from '../Ducks/lists';
+import { Types as listTypes } from '../Ducks/lists';
 import { toSingular } from '../../Helpers';
 
 const getParams = data => {
@@ -20,24 +20,24 @@ export function* removeLoader({ type }) {
 }
 
 const GetLists = [
-  takeLatest(userTypes.START_GET_STATUS, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_STATUS, removeLoader),
-  takeLatest(userTypes.ERROR_GET_STATUS, removeLoader),
-  takeLatest(userTypes.START_GET_RADIOS, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_RADIOS, removeLoader),
-  takeLatest(userTypes.ERROR_GET_RADIOS, removeLoader),
-  takeLatest(userTypes.START_GET_BATERIAS, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_BATERIAS, removeLoader),
-  takeLatest(userTypes.ERROR_GET_BATERIAS, removeLoader),
-  takeLatest(userTypes.START_GET_LOCAIS, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_LOCAIS, removeLoader),
-  takeLatest(userTypes.ERROR_GET_LOCAIS, removeLoader),
-  takeLatest(userTypes.START_GET_PROFISSOES, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_PROFISSOES, removeLoader),
-  takeLatest(userTypes.ERROR_GET_PROFISSOES, removeLoader),
-  takeLatest(userTypes.START_GET_EMPRESTIMOS, addLoader),
-  takeLatest(userTypes.SUCCESS_GET_EMPRESTIMOS, removeLoader),
-  takeLatest(userTypes.ERROR_GET_EMPRESTIMOS, removeLoader),
+  takeLatest(listTypes.START_GET_STATUS, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_STATUS, removeLoader),
+  takeLatest(listTypes.ERROR_GET_STATUS, removeLoader),
+  takeLatest(listTypes.START_GET_RADIOS, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_RADIOS, removeLoader),
+  takeLatest(listTypes.ERROR_GET_RADIOS, removeLoader),
+  takeLatest(listTypes.START_GET_BATERIAS, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_BATERIAS, removeLoader),
+  takeLatest(listTypes.ERROR_GET_BATERIAS, removeLoader),
+  takeLatest(listTypes.START_GET_LOCAIS, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_LOCAIS, removeLoader),
+  takeLatest(listTypes.ERROR_GET_LOCAIS, removeLoader),
+  takeLatest(listTypes.START_GET_PROFISSOES, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_PROFISSOES, removeLoader),
+  takeLatest(listTypes.ERROR_GET_PROFISSOES, removeLoader),
+  takeLatest(listTypes.START_GET_EMPRESTIMOS, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_EMPRESTIMOS, removeLoader),
+  takeLatest(listTypes.ERROR_GET_EMPRESTIMOS, removeLoader),
 ];
 
 const AddLists = [

@@ -1,19 +1,19 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { Types as userTypes, Creators as userCreators } from '../Ducks/lists';
+import { Types as listTypes, Creators as listCreators } from '../Ducks/lists';
 import { getRadios as getRadiosRequest } from '../Services';
 
 export function* getRadios() {
   try {
     const response = yield call(getRadiosRequest);
 
-    yield put(userCreators.successGetRadios(response.data));
+    yield put(listCreators.successGetRadios(response.data));
   } catch (error) {
-    yield put(userCreators.errorGetRadios(error.response.data));
+    yield put(listCreators.errorGetRadios(error.response.data));
   }
 }
 
 export function* SagaGetRadios() {
-  yield takeLatest(userTypes.START_GET_RADIOS, getRadios);
+  yield takeLatest(listTypes.START_GET_RADIOS, getRadios);
 }
 
 export default SagaGetRadios;

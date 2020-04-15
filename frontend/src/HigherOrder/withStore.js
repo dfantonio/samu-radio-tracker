@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Creators as userCreators } from '../Store/Ducks/lists';
+import { Creators as listCreators } from '../Store/Ducks/lists';
 
 export default function withStore(WrappedComponent) {
   const mapStateToProps = state => ({
@@ -16,11 +16,11 @@ export default function withStore(WrappedComponent) {
   });
 
   const mapDispatchToProps = dispatch => ({
-    getStatus: () => dispatch(userCreators.startGetStatus()),
-    getRadios: () => dispatch(userCreators.startGetRadios()),
-    getBaterias: () => dispatch(userCreators.startGetBaterias()),
-    getLocais: () => dispatch(userCreators.startGetLocais()),
-    getProfissoes: () => dispatch(userCreators.startGetProfissoes()),
+    getStatus: () => dispatch(listCreators.startGetStatus()),
+    getRadios: () => dispatch(listCreators.startGetRadios()),
+    getBaterias: () => dispatch(listCreators.startGetBaterias()),
+    getLocais: () => dispatch(listCreators.startGetLocais()),
+    getProfissoes: () => dispatch(listCreators.startGetProfissoes()),
   });
 
   class PopulateStore extends PureComponent {
