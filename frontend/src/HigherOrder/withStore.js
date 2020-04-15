@@ -46,7 +46,13 @@ export default function withStore(WrappedComponent) {
 
     render() {
       const {
-        isFetchingLists,
+        isFetchingLists: {
+          status: { get: statusGetLoading },
+          radio: { get: radiosGetLoading },
+          bateria: { get: bateriasGetLoading },
+          local: { get: locaisGetLoading },
+          profissao: { get: profissoesGetLoading },
+        },
         status,
         radios,
         baterias,
@@ -54,11 +60,11 @@ export default function withStore(WrappedComponent) {
         profissoes,
       } = this.props;
 
-      if (!isFetchingLists && !status.length) this.updateStatus();
-      if (!isFetchingLists && !radios.length) this.updateRadios();
-      if (!isFetchingLists && !baterias.length) this.updateBaterias();
-      if (!isFetchingLists && !locais.length) this.updateLocais();
-      if (!isFetchingLists && !profissoes.length) this.updateProfissoes();
+      if (!statusGetLoading && !status.length) this.updateStatus();
+      if (!radiosGetLoading && !radios.length) this.updateRadios();
+      if (!bateriasGetLoading && !baterias.length) this.updateBaterias();
+      if (!locaisGetLoading && !locais.length) this.updateLocais();
+      if (!profissoesGetLoading && !profissoes.length) this.updateProfissoes();
 
       return <WrappedComponent {...this.props} />;
     }

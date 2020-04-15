@@ -16,6 +16,12 @@ export const { Types, Creators } = createActions({
   startAddProfissao: ['data'],
   SuccessAddProfissao: [],
   ErrorAddProfissao: ['errors'],
+  startAddEmprestimo: ['data'],
+  SuccessAddEmprestimo: [],
+  ErrorAddEmprestimo: ['errors'],
+  startFinishEmprestimo: ['data'],
+  SuccessFinishEmprestimo: [],
+  ErrorFinishEmprestimo: ['errors'],
 });
 
 const initialState = {
@@ -49,20 +55,13 @@ function addRegisterErrors(state, { errors }) {
   };
 }
 
-function startAddRadio(state) {
-  return { ...state };
-}
-
+//TODO: Reduzir todo esse caminhão de funções em uma só
 function SuccessAddRadio(state) {
   return { ...state, hasSuccess: true, hasErrors: false };
 }
 
 function ErrorAddRadio(state, { errors }) {
   return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
-}
-
-function startAddBattery(state) {
-  return { ...state };
 }
 
 function SuccessAddBattery(state) {
@@ -73,20 +72,12 @@ function ErrorAddBattery(state, { errors }) {
   return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
 }
 
-function startAddLocal(state) {
-  return { ...state };
-}
-
 function SuccessAddLocal(state) {
   return { ...state, hasSuccess: true, hasErrors: false };
 }
 
 function ErrorAddLocal(state, { errors }) {
   return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
-}
-
-function startAddProfissao(state) {
-  return { ...state };
 }
 
 function SuccessAddProfissao(state) {
@@ -97,21 +88,27 @@ function ErrorAddProfissao(state, { errors }) {
   return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
 }
 
+function ErrorAddEmprestimo(state, { errors }) {
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
+}
+
+function ErrorFinishEmprestimo(state, { errors }) {
+  return { ...state, hasErrors: true, errors: { ...state.errors, ...errors } };
+}
+
 export const user = {
   [Types.ADD_REGISTER_ERRORS]: addRegisterErrors,
   [Types.CLEAR_SUCCESS]: clearSuccess,
-  [Types.START_ADD_RADIO]: startAddRadio,
   [Types.SUCCESS_ADD_RADIO]: SuccessAddRadio,
   [Types.ERROR_ADD_RADIO]: ErrorAddRadio,
-  [Types.START_ADD_BATTERY]: startAddBattery,
   [Types.SUCCESS_ADD_BATTERY]: SuccessAddBattery,
   [Types.ERROR_ADD_BATTERY]: ErrorAddBattery,
-  [Types.START_ADD_LOCAL]: startAddLocal,
   [Types.SUCCESS_ADD_LOCAL]: SuccessAddLocal,
   [Types.ERROR_ADD_LOCAL]: ErrorAddLocal,
-  [Types.START_ADD_PROFISSAO]: startAddProfissao,
   [Types.SUCCESS_ADD_PROFISSAO]: SuccessAddProfissao,
   [Types.ERROR_ADD_PROFISSAO]: ErrorAddProfissao,
+  [Types.ERROR_ADD_EMPRESTIMO]: ErrorAddEmprestimo,
+  [Types.ERROR_FINISH_EMPRESTIMO]: ErrorFinishEmprestimo,
 };
 
 export default createReducer(initialState, user);

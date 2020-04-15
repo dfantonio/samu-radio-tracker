@@ -17,9 +17,9 @@ export const { Types, Creators } = createActions({
   startGetProfissoes: [],
   successGetProfissoes: ['profissoes'],
   errorGetProfissoes: ['error'],
-  errors: {
-    status: '',
-  },
+  startGetEmprestimos: ['params'],
+  successGetEmprestimos: ['emprestimos'],
+  errorGetEmprestimos: ['error'],
 });
 
 const initialState = {
@@ -28,6 +28,10 @@ const initialState = {
   baterias: [],
   locais: [],
   profissoes: [],
+  emprestimos: [],
+  errors: {
+    status: '',
+  },
 };
 
 /* Reducer */
@@ -71,6 +75,14 @@ function errorGetProfissoes(state, { error }) {
   return { ...initialState, errors: { ...state.errors, profissoes: error } };
 }
 
+function successGetEmprestimos(state, { emprestimos }) {
+  return { ...state, emprestimos };
+}
+
+function errorGetEmprestimos(state, { error }) {
+  return { ...initialState, errors: { ...state.errors, emprestimos: error } };
+}
+
 export const lists = {
   [Types.SUCCESS_GET_STATUS]: successGetStatus,
   [Types.ERROR_GET_STATUS]: errorGetStatus,
@@ -82,6 +94,8 @@ export const lists = {
   [Types.ERROR_GET_LOCAIS]: errorGetLocais,
   [Types.SUCCESS_GET_PROFISSOES]: successGetProfissoes,
   [Types.ERROR_GET_PROFISSOES]: errorGetProfissoes,
+  [Types.SUCCESS_GET_EMPRESTIMOS]: successGetEmprestimos,
+  [Types.ERROR_GET_EMPRESTIMOS]: errorGetEmprestimos,
 };
 
 export default createReducer(initialState, lists);

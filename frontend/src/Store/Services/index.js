@@ -1,4 +1,11 @@
-export { addRadio, addBattery, addLocal, addProfissao } from './register';
+export {
+  addRadio,
+  addBattery,
+  addLocal,
+  addProfissao,
+  addEmprestimo,
+  finishEmprestimo,
+} from './register';
 export {
   getStatus,
   getRadios,

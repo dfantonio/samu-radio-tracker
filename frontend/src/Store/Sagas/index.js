@@ -9,6 +9,9 @@ import SagaRegisterRadio from './SagaRegisterRadio';
 import SagaRegisterBattery from './SagaRegisterBattery';
 import SagaRegisterProfissao from './SagaRegisterProfissao';
 import SagaRegisterLocal from './SagaRegisterLocal';
+import SagaGetEmprestimos from './SagaGetEmprestimos';
+import SagaFinishEmprestimo from './SagaFinishEmprestimo';
+import SagaRegisterEmprestimo from './SagaRegisterEmprestimo';
 
 export default function* sagas() {
   yield all([
@@ -22,5 +25,8 @@ export default function* sagas() {
     SagaGetBaterias(),
     SagaGetLocais(),
     SagaGetProfissoes(),
+    SagaGetEmprestimos(),
+    SagaFinishEmprestimo(),
+    SagaRegisterEmprestimo(),
   ]);
 }
