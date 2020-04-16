@@ -2,9 +2,9 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { Types as listTypes, Creators as listCreators } from '../Ducks/lists';
 import { getBaterias as getBateriasRequest } from '../Services';
 
-export function* getBaterias() {
+export function* getBaterias({ params }) {
   try {
-    const response = yield call(getBateriasRequest);
+    const response = yield call(getBateriasRequest, params);
 
     yield put(listCreators.successGetBaterias(response.data));
   } catch (error) {

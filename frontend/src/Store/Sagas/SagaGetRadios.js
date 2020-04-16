@@ -2,9 +2,9 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { Types as listTypes, Creators as listCreators } from '../Ducks/lists';
 import { getRadios as getRadiosRequest } from '../Services';
 
-export function* getRadios() {
+export function* getRadios({ params }) {
   try {
-    const response = yield call(getRadiosRequest);
+    const response = yield call(getRadiosRequest, params);
 
     yield put(listCreators.successGetRadios(response.data));
   } catch (error) {
