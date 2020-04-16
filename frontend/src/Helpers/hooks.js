@@ -13,7 +13,6 @@ export const useApiRequest = (
     try {
       const res = await apiRequest(params);
 
-      console.log(res.data);
       setResponse(res.data);
       setIsLoading(false);
       onFinishLoading();

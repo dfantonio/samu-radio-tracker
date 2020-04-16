@@ -10,6 +10,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "globals": {
@@ -30,7 +31,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react", "import"],
+  "plugins": ["prettier", "react", "import", "react-hooks"],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
@@ -42,6 +43,7 @@
     "import/no-unresolved": 2,
     "class-methods-use-this": ["off"],
     "import/newline-after-import": ["error"],
+    "react-hooks/exhaustive-deps": "off",
     "react/self-closing-comp": [
       "error",
       {
