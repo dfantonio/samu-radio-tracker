@@ -5,6 +5,7 @@ export default makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   wrapper: {
     margin: theme.spacing(1),

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import { withStore } from '../../HigherOrder';
@@ -19,12 +18,14 @@ const opcoes = [
   { id: 3, tipo: 'Acessório' },
 ];
 
-function Home({ radios, baterias, locais, profissoes }) {
+function Home() {
   const [productType, setProductType] = useState();
   const [modalVisible, setModal] = useState(false);
   const [selectedProduct, setProduct] = useState({});
   const [payload, setPayload] = useState({ usuario: 1 });
-  const { emprestimos } = useSelector(state => state.lists);
+  const { emprestimos, locais, profissoes, radios, baterias } = useSelector(
+    state => state.lists
+  );
   const {
     emprestimo: {
       get: emprestimoGetLoading,
@@ -37,8 +38,7 @@ function Home({ radios, baterias, locais, profissoes }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  //TODO: Disparar uma chamada somente quando o usuário escolher um tipo de produto
-  //TODO: Adicionar um filtro de listar somente os produtos válidos
+  //TODO: Adicionar um loader aos seletores enquanto a sua lista estiver carregando
   const optionsArray = () => {
     switch (productType) {
       case 0:
@@ -55,7 +55,23 @@ function Home({ radios, baterias, locais, profissoes }) {
 
   useEffect(() => {
     updateEmprestimosList();
+    dispatch(listCreators.startGetProfissoes());
+    dispatch(listCreators.startGetLocais());
   }, []);
+
+  useEffect(() => {
+    switch (productType) {
+      case 0:
+        dispatch(listCreators.startGetRadios({ status: 3 }));
+        break;
+      case 1:
+        dispatch(listCreators.startGetBaterias({ status: 3 }));
+        break;
+
+      default:
+        break;
+    }
+  }, [productType]);
 
   useEffect(() => console.log('payload:', payload), [payload]);
   useEffect(() => console.log('selectedProduct:', selectedProduct), [selectedProduct]);
@@ -114,7 +130,7 @@ function Home({ radios, baterias, locais, profissoes }) {
             selected={productType}
             placeholder="Tipo"
             name="product_type"
-            error={!!bemError && !productType && 'Favor selecionar um tipo'}
+            error={!!bemError && productType === undefined && 'Favor selecionar um tipo'}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -160,4 +176,4 @@ function Home({ radios, baterias, locais, profissoes }) {
   );
 }
 
-export default withStore(Home);
+export default Home;

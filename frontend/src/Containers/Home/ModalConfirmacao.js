@@ -23,6 +23,7 @@ const Modal = ({ isVisible, onConfirm, onCancel, data }) => {
           <Grid container spacing={1} justify="center">
             <Grid item xs={12} sm={6}>
               <TextField
+                disabled
                 value={numero_serial}
                 variant="outlined"
                 margin="dense"
@@ -33,6 +34,7 @@ const Modal = ({ isVisible, onConfirm, onCancel, data }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                disabled
                 value={tipo}
                 variant="outlined"
                 margin="dense"
@@ -43,6 +45,7 @@ const Modal = ({ isVisible, onConfirm, onCancel, data }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                disabled
                 value={nome}
                 variant="outlined"
                 margin="dense"
