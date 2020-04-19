@@ -33,6 +33,9 @@ const initialState = {
     nome: '',
     issi: '',
     patrimonio: '',
+    local_id: '',
+    profissao_id: '',
+    bem_id: '',
   },
 };
 

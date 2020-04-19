@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 import PropTypes from 'prop-types';
+import * as styles from './styles';
 
 export default function SubmitButton({ loading, success, error, onClick }) {
   const classes = useStyles();
@@ -15,6 +16,7 @@ export default function SubmitButton({ loading, success, error, onClick }) {
 
   return (
     <div className={classes.root}>
+      <styles.Error>{error}</styles.Error>
       <div className={classes.wrapper}>
         <Button
           variant="contained"
@@ -34,12 +36,12 @@ export default function SubmitButton({ loading, success, error, onClick }) {
 SubmitButton.propTypes = {
   loading: PropTypes.bool,
   success: PropTypes.bool,
-  error: PropTypes.bool,
+  error: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
 
 SubmitButton.defaultProps = {
   success: false,
   loading: false,
-  error: false,
+  error: '',
 };

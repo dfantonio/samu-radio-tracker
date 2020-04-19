@@ -1,10 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { green, red } from '@material-ui/core/colors';
+import styled from 'styled-components';
 
 export default makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
   },
   wrapper: {
@@ -32,3 +34,9 @@ export default makeStyles(theme => ({
     marginLeft: -12,
   },
 }));
+
+export const Error = styled.div`
+  font-size: 14px;
+  color: ${red[600]};
+  text-align: center;
+`;

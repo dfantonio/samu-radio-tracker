@@ -38,7 +38,12 @@ function Home() {
     },
   } = useSelector(state => state.loading);
   const { errors } = useSelector(state => state.register);
-  const { local_id: localError, profissao_id: profissaoError, bem_id: bemError } = errors;
+  const {
+    local_id: localError,
+    profissao_id: profissaoError,
+    bem_id: bemError,
+    message: messageError,
+  } = errors;
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -87,6 +92,7 @@ function Home() {
     const name = target.name;
 
     if (errors[name]) dispatch(registerCreators.addRegisterErrors({ [name]: '' }));
+    if (messageError) dispatch(registerCreators.addRegisterErrors({ message: '' }));
 
     setPayload({
       ...payload,
@@ -172,7 +178,11 @@ function Home() {
           />
         </Grid>
       </Grid>
-      <SubmitButton loading={!!emprestimoAddLoading} onClick={handleAddEmprestimo} />
+      <SubmitButton
+        error={messageError}
+        loading={!!emprestimoAddLoading}
+        onClick={handleAddEmprestimo}
+      />
 
       <Table
         data={emprestimos}

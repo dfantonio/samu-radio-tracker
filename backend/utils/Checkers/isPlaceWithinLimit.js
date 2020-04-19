@@ -26,7 +26,13 @@ async function isPlaceWithinLimit(local_id, bem_id) {
   const currentLoansAmount = await currentLoans(local_id, tipo_id);
 
   if (currentLoansAmount >= max)
-    throw { errors: { message: `O limite máximo de ${name[tipo_id - 1]} foi atingido` } };
+    throw {
+      errors: {
+        message: `O limite máximo de ${
+          name[tipo_id - 1]
+        } foi atingido para o local desejado`,
+      },
+    };
 
   return true;
 }
