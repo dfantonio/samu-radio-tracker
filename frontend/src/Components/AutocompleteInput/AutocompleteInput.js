@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import useStyles from './styles';
 
 const AutocompleteInput = ({
   array,
@@ -13,6 +15,7 @@ const AutocompleteInput = ({
   name,
   placeholder,
   error,
+  loading,
 }) => {
   const buildOnChange = (event, value) => {
     const { id } = value || {};
@@ -22,6 +25,7 @@ const AutocompleteInput = ({
   };
 
   const [key, setKey] = useState(name);
+  const classes = useStyles();
 
   useEffect(() => {
     setKey(a => a + 1);
@@ -34,7 +38,7 @@ const AutocompleteInput = ({
           key={key}
           id={`Autocomplete-${name}`}
           options={array}
-          // loading
+          loading={loading}
           loadingText="Carregando..."
           onChange={buildOnChange}
           getOptionLabel={renderLabel}
@@ -47,6 +51,22 @@ const AutocompleteInput = ({
               name="ABC"
               label={placeholder}
               variant="outlined"
+              InputProps={{
+                ...params.InputProps,
+                endAdornment: (
+                  <React.Fragment>
+                    {loading ? (
+                      <CircularProgress
+                        color="inherit"
+                        size={20}
+                        className={classes.loader}
+                      />
+                    ) : (
+                      params.InputProps.endAdornment
+                    )}
+                  </React.Fragment>
+                ),
+              }}
             />
           )}
         />
@@ -63,6 +83,7 @@ AutocompleteInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   error: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 AutocompleteInput.defaultProps = {
@@ -71,6 +92,7 @@ AutocompleteInput.defaultProps = {
   placeholder: '',
   name: '',
   error: '',
+  loading: false,
 };
 
 export default AutocompleteInput;

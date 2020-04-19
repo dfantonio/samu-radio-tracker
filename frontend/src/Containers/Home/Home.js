@@ -27,6 +27,10 @@ function Home() {
     state => state.lists
   );
   const {
+    radio: { get: radioGetLoading },
+    bateria: { get: bateriaGetLoading },
+    profissao: { get: profissaoGetLoading },
+    local: { get: localGetLoading },
     emprestimo: {
       get: emprestimoGetLoading,
       add: emprestimoAddLoading,
@@ -38,7 +42,8 @@ function Home() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  //TODO: Adicionar um loader aos seletores enquanto a sua lista estiver carregando
+  const optionsLoading = radioGetLoading || bateriaGetLoading;
+
   const optionsArray = () => {
     switch (productType) {
       case 0:
@@ -135,6 +140,7 @@ function Home() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <AutocompleteInput
+            loading={!!optionsLoading}
             name="bem_id"
             array={optionsArray()}
             onChange={handleInputChange}
@@ -145,6 +151,7 @@ function Home() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <AutocompleteInput
+            loading={!!localGetLoading}
             name="local_id"
             array={locais}
             onChange={handleInputChange}
@@ -155,6 +162,7 @@ function Home() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <AutocompleteInput
+            loading={!!profissaoGetLoading}
             name="profissao_id"
             array={profissoes}
             onChange={handleInputChange}
