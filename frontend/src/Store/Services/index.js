@@ -13,4 +13,5 @@ export {
   getLocais,
   getProfissoes,
   getEmprestimos,
+  getCarregadores,
 } from './list';

@@ -38,6 +38,9 @@ const GetLists = [
   takeLatest(listTypes.START_GET_EMPRESTIMOS, addLoader),
   takeLatest(listTypes.SUCCESS_GET_EMPRESTIMOS, removeLoader),
   takeLatest(listTypes.ERROR_GET_EMPRESTIMOS, removeLoader),
+  takeLatest(listTypes.START_GET_CARREGADORES, addLoader),
+  takeLatest(listTypes.SUCCESS_GET_CARREGADORES, removeLoader),
+  takeLatest(listTypes.ERROR_GET_CARREGADORES, removeLoader),
 ];
 
 const AddLists = [

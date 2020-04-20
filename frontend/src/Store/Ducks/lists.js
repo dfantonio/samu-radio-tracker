@@ -8,6 +8,9 @@ export const { Types, Creators } = createActions({
   startGetRadios: ['params'],
   successGetRadios: ['radios'],
   errorGetRadios: ['error'],
+  startGetCarregadores: ['params'],
+  successGetCarregadores: ['carregadores'],
+  errorGetCarregadores: ['error'],
   startGetBaterias: ['params'],
   successGetBaterias: ['baterias'],
   errorGetBaterias: ['error'],
@@ -25,6 +28,7 @@ export const { Types, Creators } = createActions({
 const initialState = {
   status: [],
   radios: [],
+  carregadores: [],
   baterias: [],
   locais: [],
   profissoes: [],
@@ -83,6 +87,14 @@ function errorGetEmprestimos(state, { error }) {
   return { ...initialState, errors: { ...state.errors, emprestimos: error } };
 }
 
+function successGetCarregadores(state, { carregadores }) {
+  return { ...state, carregadores };
+}
+
+function errorGetCarregadores(state, { error }) {
+  return { ...initialState, errors: { ...state.errors, carregadores: error } };
+}
+
 export const lists = {
   [Types.SUCCESS_GET_STATUS]: successGetStatus,
   [Types.ERROR_GET_STATUS]: errorGetStatus,
@@ -96,6 +108,8 @@ export const lists = {
   [Types.ERROR_GET_PROFISSOES]: errorGetProfissoes,
   [Types.SUCCESS_GET_EMPRESTIMOS]: successGetEmprestimos,
   [Types.ERROR_GET_EMPRESTIMOS]: errorGetEmprestimos,
+  [Types.SUCCESS_GET_CARREGADORES]: successGetCarregadores,
+  [Types.ERROR_GET_CARREGADORES]: errorGetCarregadores,
 };
 
 export default createReducer(initialState, lists);

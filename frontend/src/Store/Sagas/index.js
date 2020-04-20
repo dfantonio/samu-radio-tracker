@@ -12,6 +12,7 @@ import SagaRegisterLocal from './SagaRegisterLocal';
 import SagaGetEmprestimos from './SagaGetEmprestimos';
 import SagaFinishEmprestimo from './SagaFinishEmprestimo';
 import SagaRegisterEmprestimo from './SagaRegisterEmprestimo';
+import SagaGetCarregadores from './SagaGetCarregadores';
 
 export default function* sagas() {
   yield all([
@@ -28,5 +29,6 @@ export default function* sagas() {
     SagaGetEmprestimos(),
     SagaFinishEmprestimo(),
     SagaRegisterEmprestimo(),
+    SagaGetCarregadores(),
   ]);
 }

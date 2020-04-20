@@ -13,6 +13,7 @@ const initialState = {
   bateria: { get: 0 },
   local: { get: 0 },
   profissao: { get: 0 },
+  carregador: { get: 0 },
   emprestimo: { get: 0, finish: 0, add: 0 },
 };
 

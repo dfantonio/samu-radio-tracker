@@ -7,6 +7,7 @@ export function textFormat(text = '') {
 export function toSingular(word) {
   pluralize.addSingularRule(/profissoes$/i, 'profissao');
   pluralize.addSingularRule(/locais$/i, 'local');
+  pluralize.addSingularRule(/carregadores$/i, 'carregador');
   const a = pluralize.singular(word);
 
   return a;

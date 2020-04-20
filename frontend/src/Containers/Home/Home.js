@@ -23,7 +23,7 @@ function Home() {
   const [modalVisible, setModal] = useState(false);
   const [selectedProduct, setProduct] = useState({});
   const [payload, setPayload] = useState({ usuario: 1 });
-  const { emprestimos, locais, profissoes, radios, baterias } = useSelector(
+  const { emprestimos, locais, profissoes, radios, baterias, carregadores } = useSelector(
     state => state.lists
   );
   const {
@@ -31,6 +31,7 @@ function Home() {
     bateria: { get: bateriaGetLoading },
     profissao: { get: profissaoGetLoading },
     local: { get: localGetLoading },
+    carregador: { get: carregadorGetLoading },
     emprestimo: {
       get: emprestimoGetLoading,
       add: emprestimoAddLoading,
@@ -47,7 +48,7 @@ function Home() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const optionsLoading = radioGetLoading || bateriaGetLoading;
+  const optionsLoading = radioGetLoading || bateriaGetLoading || carregadorGetLoading;
 
   const optionsArray = () => {
     switch (productType) {
@@ -55,6 +56,8 @@ function Home() {
         return radios;
       case 1:
         return baterias;
+      case 2:
+        return carregadores;
       default:
         return [];
     }
@@ -76,6 +79,9 @@ function Home() {
         break;
       case 1:
         dispatch(listCreators.startGetBaterias({ status: 3 }));
+        break;
+      case 2:
+        dispatch(listCreators.startGetCarregadores({ status: 3 }));
         break;
 
       default:
