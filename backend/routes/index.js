@@ -6,6 +6,7 @@ const locais = require('./locais');
 const baterias = require('./baterias');
 const profissoes = require('./profissoes');
 const emprestimos = require('./emprestimos');
+const carregadores = require('./carregadores');
 
 routes.use('/radios', radios);
 routes.use('/status', status);
@@ -13,6 +14,7 @@ routes.use('/locais', locais);
 routes.use('/baterias', baterias);
 routes.use('/profissoes', profissoes);
 routes.use('/emprestimos', emprestimos);
+routes.use('/carregadores', carregadores);
 
 routes.get('/', (req, res) =>
   sequelize
