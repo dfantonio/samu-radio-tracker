@@ -17,7 +17,7 @@ const addRadio = async (req, res) => {
 
     res.status(201).send(response);
   } catch (err) {
-    res.status(400).send(ModelSequelizeErrors(err.errors));
+    res.status(400).send(ModelSequelizeErrors(err));
   }
 };
 

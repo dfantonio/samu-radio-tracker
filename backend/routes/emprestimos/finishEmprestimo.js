@@ -15,7 +15,7 @@ const finishEmprestimo = async (req, res) => {
 
     res.send('Empréstimo finalizado com sucesso');
   } catch (err) {
-    res.status(400).send(ModelSequelizeErrors(err.errors));
+    res.status(400).send(ModelSequelizeErrors(err));
   }
 };
 
