@@ -15,3 +15,4 @@ export {
   getEmprestimos,
   getCarregadores,
 } from './list';
+export { login, register } from './user';

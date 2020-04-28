@@ -36,7 +36,7 @@ export default makeStyles(theme => ({
 }));
 
 export const Error = styled.div`
-  font-size: 14px;
+  font-size: 18px;
   color: ${red[600]};
   text-align: center;
 `;

@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import SagaLogin from './SagaLogin';
 import SagaLoader from './SagaLoader';
 import SagaGetStatus from './SagaGetStatus';
 import SagaGetRadios from './SagaGetRadios';
@@ -25,6 +26,7 @@ export default function* sagas() {
     SagaGetRadios(),
     SagaGetBaterias(),
     SagaGetLocais(),
+    SagaLogin(),
     SagaGetProfissoes(),
     SagaGetEmprestimos(),
     SagaFinishEmprestimo(),

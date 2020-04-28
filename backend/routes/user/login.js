@@ -17,18 +17,18 @@ const Login = async (req, res) => {
         return user;
       })
       .catch(e => {
-        if (typeof e === 'string') throw e;
-        throw 'Usuário não encontrado';
+        if (typeof e === 'string') throw { errors: { senha: e } };
+        throw { errors: { email: 'Usuário não encontrado' } };
       });
 
     const payload = { usuario_id: user.id, nome: user.nome };
-    const accessToken = jwt.sign(payload, process.env.JWT_KEY, {
-      expiresIn: '12h',
+    const sessionToken = jwt.sign(payload, process.env.JWT_KEY, {
+      expiresIn: '20s',
     });
 
-    res.status(200).send({ accessToken });
+    res.status(200).send({ sessionToken });
   } catch (err) {
-    res.status(401).send(ModelSequelizeErrors(err));
+    res.status(400).send(ModelSequelizeErrors(err));
   }
 };
 

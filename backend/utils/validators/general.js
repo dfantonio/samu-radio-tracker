@@ -67,7 +67,7 @@ const uniqueError = string => {
  * @param {object} payload
  */
 const ModelSequelizeErrors = payload => {
-  if (!payload.errors) return payload;
+  if (!payload.errors || typeof payload.errors !== Array) return payload;
   const errors = payload.errors.map(item => {
     const array = item.message.split(': ');
 

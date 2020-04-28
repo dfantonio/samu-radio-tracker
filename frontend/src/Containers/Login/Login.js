@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,11 +6,12 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { useHistory } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import { Creators as sessionCreators } from '../../Store/Ducks/session';
 
 function Copyright() {
   return (
@@ -46,7 +47,26 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
   const classes = useStyles();
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const { errors } = useSelector(state => state.session);
+
+  const [payload, setPayload] = useState({ usuario: 1 });
+
+  const handleSubmit = () => {
+    dispatch(sessionCreators.startLogin(payload));
+  };
+
+  function handleInputChange(event) {
+    const { target } = event;
+    const value = target.value;
+    const name = target.name;
+
+    if (errors[name]) dispatch(sessionCreators.addSessionErrors({ [name]: '' }));
+    setPayload({
+      ...payload,
+      [name]: value,
+    });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -68,30 +88,30 @@ export default function Home() {
             label="Email"
             name="email"
             autoComplete="email"
-            autoFocus
+            error={!!errors.email}
+            helperText={errors.email}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            name="password"
+            name="senha"
             label="Senha"
             type="password"
             id="password"
             autoComplete="current-password"
+            error={!!errors.senha}
+            helperText={errors.senha}
+            onChange={handleInputChange}
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Lemb"
-          /> */}
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => history.push('/home')}
+            onClick={handleSubmit}
           >
             Login
           </Button>

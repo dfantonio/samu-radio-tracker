@@ -10,7 +10,7 @@
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "lint": "eslint frontend/src backend -c .eslintrc.json --ext js,ts"
+    "lint": "eslint frontend/src backend --cache"
   },
   "eslintConfig": {
     "extends": "react-app"
