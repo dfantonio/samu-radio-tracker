@@ -15,7 +15,7 @@ bff.interceptors.request.use(config => {
 
 bff.interceptors.response.use(null, error => {
   if (error.response.status === 403) {
-    store.dispatch(sessionCreators.clearToken());
+    store.dispatch(sessionCreators.clearSession());
   }
 
   return Promise.reject(error);

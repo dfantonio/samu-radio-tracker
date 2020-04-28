@@ -8,7 +8,7 @@ export function* startLogin({ params }) {
   try {
     const response = yield call(login, params);
 
-    yield put(sessionCreators.successLogin(response.data.sessionToken));
+    yield put(sessionCreators.successLogin(response.data));
     yield call([history, history.push], paths.HOME);
   } catch (error) {
     yield put(sessionCreators.errorLogin(error.response.data.errors));

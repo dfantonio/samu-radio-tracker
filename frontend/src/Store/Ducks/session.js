@@ -3,26 +3,31 @@ import { createReducer, createActions } from 'reduxsauce';
 export const { Types, Creators } = createActions({
   addSessionErrors: ['errors'],
   startLogin: ['params'],
-  successLogin: ['sessionToken'],
+  successLogin: ['data'],
   errorLogin: ['errors'],
-  clearToken: [],
+  clearSession: [],
 });
 
 /* Initial State */
 const initialState = {
   sessionToken: '',
+  nome: '',
   hasErrors: false,
   errors: {
     email: '',
     senha: '',
+    message: '',
   },
 };
 
 /* Reducer */
-function successLogin(state, { sessionToken }) {
+function successLogin(state, { data }) {
+  const { sessionToken, nome } = data;
+
   return {
     ...state,
     sessionToken,
+    nome,
   };
 }
 
@@ -51,10 +56,11 @@ function addSessionErrors(state, { errors }) {
   };
 }
 
-function clearToken(state) {
+function clearSession(state) {
   return {
     ...state,
     sessionToken: '',
+    nome: '',
   };
 }
 
@@ -62,7 +68,7 @@ export const session = {
   [Types.ADD_SESSION_ERRORS]: addSessionErrors,
   [Types.SUCCESS_LOGIN]: successLogin,
   [Types.ERROR_LOGIN]: errorLogin,
-  [Types.CLEAR_TOKEN]: clearToken,
+  [Types.CLEAR_SESSION]: clearSession,
 };
 
 export default createReducer(initialState, session);

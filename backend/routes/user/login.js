@@ -26,7 +26,7 @@ const Login = async (req, res) => {
       expiresIn: '12h',
     });
 
-    res.status(200).send({ sessionToken });
+    res.status(200).send({ sessionToken, nome: user.nome });
   } catch (err) {
     res.status(400).send(ModelSequelizeErrors(err));
   }
