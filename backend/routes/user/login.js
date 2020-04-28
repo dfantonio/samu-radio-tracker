@@ -23,7 +23,7 @@ const Login = async (req, res) => {
 
     const payload = { usuario_id: user.id, nome: user.nome };
     const sessionToken = jwt.sign(payload, process.env.JWT_KEY, {
-      expiresIn: '20s',
+      expiresIn: '12h',
     });
 
     res.status(200).send({ sessionToken });

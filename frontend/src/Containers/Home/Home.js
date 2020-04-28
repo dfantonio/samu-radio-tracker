@@ -22,7 +22,7 @@ function Home() {
   const [productType, setProductType] = useState();
   const [modalVisible, setModal] = useState(false);
   const [selectedProduct, setProduct] = useState({});
-  const [payload, setPayload] = useState({ usuario: 1 });
+  const [payload, setPayload] = useState({});
   const { emprestimos, locais, profissoes, radios, baterias, carregadores } = useSelector(
     state => state.lists
   );
@@ -119,7 +119,6 @@ function Home() {
     dispatch(
       registerCreators.startFinishEmprestimo({
         emprestimo: selectedProduct.id,
-        usuario: 1,
       })
     );
     setModal(false);

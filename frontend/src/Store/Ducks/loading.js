@@ -24,7 +24,6 @@ const initialState = {
  *  }
  */
 function startLoading(state, { data }) {
-  console.log(data);
   return {
     ...state,
     [data.object]: {

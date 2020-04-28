@@ -50,7 +50,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const { errors } = useSelector(state => state.session);
 
-  const [payload, setPayload] = useState({ usuario: 1 });
+  const [payload, setPayload] = useState();
 
   const handleSubmit = () => {
     dispatch(sessionCreators.startLogin(payload));

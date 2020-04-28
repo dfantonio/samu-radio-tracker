@@ -3,11 +3,10 @@ const { validateBody, ModelSequelizeErrors } = require('../../utils/validators/g
 const { isGoodAvailable, isPlaceWithinLimit } = require('../../utils/Checkers');
 
 const addEmprestimo = async (req, res) => {
-  validateBody(req.body, ['local_id', 'profissao_id', 'bem_id', 'usuario']);
-  const { local_id, profissao_id, bem_id, usuario } = req.body;
+  validateBody(req.body, ['local_id', 'profissao_id', 'bem_id']);
+  const { local_id, profissao_id, bem_id } = req.body;
 
   await isGoodAvailable(bem_id);
-
   await isPlaceWithinLimit(local_id, bem_id);
 
   //TODO: Configurar para validar se deve abrir o campo de descrição com base na flag do local
@@ -17,7 +16,7 @@ const addEmprestimo = async (req, res) => {
       bens_id: bem_id,
       local_id,
       profissao_id,
-      usuario_saida: usuario,
+      usuario_saida: req.user.usuario_id,
     });
 
     res.status(201).send(response);
