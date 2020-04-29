@@ -6,7 +6,7 @@
   "author": "Antônio Lima Della Flora",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start-dev": "nodemon server.js"
   },
   "devDependencies": {
