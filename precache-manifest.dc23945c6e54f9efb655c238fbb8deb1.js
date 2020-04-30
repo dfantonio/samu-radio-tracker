@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f03a2bdfa0d987a5e668c81b0bebad59",
+    "revision": "786730109dbf639b74db7d2468df7948",
     "url": "/samu-radio-tracker/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/samu-radio-tracker/static/js/2.fc10413f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "871d6e3276d295d8ab28",
-    "url": "/samu-radio-tracker/static/js/main.f1ce815e.chunk.js"
+    "revision": "2a3bc4baef2ddcef0e75",
+    "url": "/samu-radio-tracker/static/js/main.6826a8b6.chunk.js"
   },
   {
     "revision": "9ef0d2d0f56fc238d058",

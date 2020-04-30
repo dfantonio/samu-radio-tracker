@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/samu-radio-tracker/precache-manifest.a90cb080f516343a183eeb7f4f21926d.js"
+  "/samu-radio-tracker/precache-manifest.dc23945c6e54f9efb655c238fbb8deb1.js"
 );
 
 self.addEventListener('message', (event) => {
