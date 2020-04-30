@@ -1,8 +1,14 @@
 import { takeLatest, put, all } from 'redux-saga/effects';
 import { Creators as loading } from '../Ducks/loading';
 import { Types as registerTypes } from '../Ducks/register';
+import { Types as sessionTypes } from '../Ducks/session';
 import { Types as listTypes } from '../Ducks/lists';
 import { toSingular } from '../../Helpers';
+
+const loginObj = {
+  object: 'login',
+  method: 'start',
+};
 
 const getParams = data => {
   return {
@@ -17,6 +23,14 @@ export function* addLoader({ type }) {
 
 export function* removeLoader({ type }) {
   yield put(loading.stopLoading(getParams(type)));
+}
+
+export function* addLoginLoader() {
+  yield put(loading.startLoading(loginObj));
+}
+
+export function* removeLoginLoader() {
+  yield put(loading.stopLoading(loginObj));
 }
 
 const GetLists = [
@@ -56,7 +70,13 @@ const AddLists = [
 ];
 
 export function* SagaLoader() {
-  yield all([...GetLists, ...AddLists]);
+  yield all([
+    ...GetLists,
+    ...AddLists,
+    takeLatest(sessionTypes.START_LOGIN, addLoginLoader),
+    takeLatest(sessionTypes.SUCCESS_LOGIN, removeLoginLoader),
+    takeLatest(sessionTypes.ERROR_LOGIN, removeLoginLoader),
+  ]);
 }
 
 export default SagaLoader;

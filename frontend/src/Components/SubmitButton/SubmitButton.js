@@ -6,7 +6,7 @@ import useStyles from './styles';
 import PropTypes from 'prop-types';
 import * as styles from './styles';
 
-export default function SubmitButton({ loading, success, error, onClick }) {
+export default function SubmitButton({ loading, success, error, onClick, fullWidth }) {
   const classes = useStyles();
 
   const buttonClassname = clsx({
@@ -17,8 +17,10 @@ export default function SubmitButton({ loading, success, error, onClick }) {
   return (
     <div className={classes.root}>
       <styles.Error>{error}</styles.Error>
-      <div className={classes.wrapper}>
+      <styles.Wrapper fullWidth={fullWidth}>
         <Button
+          type="submit"
+          fullWidth
           variant="contained"
           color="primary"
           className={buttonClassname}
@@ -28,7 +30,7 @@ export default function SubmitButton({ loading, success, error, onClick }) {
           Salvar
         </Button>
         {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
-      </div>
+      </styles.Wrapper>
     </div>
   );
 }
@@ -37,10 +39,12 @@ SubmitButton.propTypes = {
   loading: PropTypes.bool,
   success: PropTypes.bool,
   error: PropTypes.string,
+  fullWidth: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
 SubmitButton.defaultProps = {
+  fullWidth: false,
   success: false,
   loading: false,
   error: '',

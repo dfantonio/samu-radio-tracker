@@ -8,6 +8,7 @@ export const { Types, Creators } = createActions({
 
 /* Initial State */
 const initialState = {
+  login: { start: 0 },
   status: { get: 0 },
   radio: { get: 0 },
   bateria: { get: 0 },
@@ -19,7 +20,7 @@ const initialState = {
 
 /**
  *  {
- *    object: "emprestimos",
+ *    object: "emprestimo",
  *    method: "get"
  *  }
  */

@@ -2,16 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { green, red } from '@material-ui/core/colors';
 import styled from 'styled-components';
 
-export default makeStyles(theme => ({
+export default makeStyles(() => ({
   root: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-  },
-  wrapper: {
-    margin: theme.spacing(1),
-    position: 'relative',
   },
   buttonSuccess: {
     backgroundColor: green[500],
@@ -39,4 +35,10 @@ export const Error = styled.div`
   font-size: 18px;
   color: ${red[600]};
   text-align: center;
+`;
+
+export const Wrapper = styled.div`
+  margin: 8px;
+  position: relative;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
 `;
