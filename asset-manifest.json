@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/samu-radio-tracker/static/js/main.f1ce815e.chunk.js",
+    "main.js.map": "/samu-radio-tracker/static/js/main.f1ce815e.chunk.js.map",
+    "runtime-main.js": "/samu-radio-tracker/static/js/runtime-main.1794f34b.js",
+    "runtime-main.js.map": "/samu-radio-tracker/static/js/runtime-main.1794f34b.js.map",
+    "static/js/2.fc10413f.chunk.js": "/samu-radio-tracker/static/js/2.fc10413f.chunk.js",
+    "static/js/2.fc10413f.chunk.js.map": "/samu-radio-tracker/static/js/2.fc10413f.chunk.js.map",
+    "index.html": "/samu-radio-tracker/index.html",
+    "precache-manifest.a90cb080f516343a183eeb7f4f21926d.js": "/samu-radio-tracker/precache-manifest.a90cb080f516343a183eeb7f4f21926d.js",
+    "service-worker.js": "/samu-radio-tracker/service-worker.js",
+    "static/js/2.fc10413f.chunk.js.LICENSE.txt": "/samu-radio-tracker/static/js/2.fc10413f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1794f34b.js",
+    "static/js/2.fc10413f.chunk.js",
+    "static/js/main.f1ce815e.chunk.js"
+  ]
+}
