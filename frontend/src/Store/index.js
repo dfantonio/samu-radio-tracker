@@ -17,9 +17,10 @@ const persistConfig = {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const storeEnhancer = composeWithDevTools(
-  applyMiddleware(sagaMiddleware, routerMiddleware(history))
-);
+const storeEnhancer =
+  process.env.NODE_ENV === 'production'
+    ? applyMiddleware(sagaMiddleware, routerMiddleware(history))
+    : composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(history)));
 
 const persistedReducer = persistReducer(persistConfig, Ducks(history));
 
