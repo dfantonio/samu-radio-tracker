@@ -1,5 +1,9 @@
 const THEME = '@isDarkTheme';
-const readTheme = () => localStorage.getItem(THEME) === 'true';
-const toggleTheme = () => localStorage.setItem(THEME, !readTheme());
+const readDarkTheme = () => {
+  if (!localStorage.getItem(THEME)) return true;
+  return localStorage.getItem(THEME) === 'true';
+};
 
-export { readTheme, toggleTheme };
+const toggleTheme = () => localStorage.setItem(THEME, !readDarkTheme());
+
+export { readDarkTheme, toggleTheme };

@@ -3,11 +3,11 @@ import { ApplyProvider } from './HigherOrder';
 import Routes from './routes';
 import { Header } from './Components';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { readTheme, toggleTheme } from './Helpers';
+import { readDarkTheme, toggleTheme } from './Helpers';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 function themeColor() {
-  return readTheme() ? 'light' : 'dark';
+  return readDarkTheme() ? 'light' : 'dark';
 }
 
 const App = () => {
