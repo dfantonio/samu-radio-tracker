@@ -3,6 +3,11 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
+  # Install Frontend
+  - name: 'gcr.io/cloud-builders/npm'
+    dir: 'frontend'
+    args: ['install']
+
   # Test
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'lint']
