@@ -4,16 +4,16 @@ steps:
     entrypoint: yarn
     # args: ['install']
 
-  # Lint
-  - name: node:10.20.1
-    entrypoint: yarn
-    args: ['lint']
-
   # Install Frontend
   - name: node:10.20.1
     entrypoint: yarn
     dir: 'frontend'
     # args: ['install']
+
+  # Lint
+  - name: node:10.20.1
+    entrypoint: yarn
+    args: ['lint']
 
   # Build
   - name: node:10.20.1
