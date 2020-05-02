@@ -1,19 +1,19 @@
 steps:
   # Install
-  - name: 'gcr.io/cloud-builders/yarn'
-    # entrypoint: npm
+  - name: node:10.20.1
+    entrypoint: yarn
     # args: ['install']
 
   # Lint
   - name: node:10.20.1
-    entrypoint: npm
-    args: ['run', 'lint']
+    entrypoint: yarn
+    args: ['lint']
 
   # Install Frontend
   - name: node:10.20.1
-    entrypoint: npm
+    entrypoint: yarn
     dir: 'frontend'
-    args: ['install']
+    # args: ['install']
 
   # Build
   - name: node:10.20.1
