@@ -3,9 +3,13 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
-  # Lint
-  - name: 'gcr.io/cloud-builders/yarn'
-    args: ['lint']
+  # Test
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'lint']
+
+  # # Lint
+  # - name: 'gcr.io/cloud-builders/yarn'
+  #   args: ['lint']
 
   # Build
   - name: 'gcr.io/cloud-builders/yarn'
