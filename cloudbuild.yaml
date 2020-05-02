@@ -1,12 +1,13 @@
 steps:
   # Install
+  - name: 'gcr.io/cloud-builders/yarn'
+    # entrypoint: npm
+    # args: ['install']
+
+  # Lint
   - name: node:10.20.1
     entrypoint: npm
-    args: ['install']
-
-  - name: node:10.20.1
-    entrypoint: node
-    args: ['-v']
+    args: ['run', 'lint']
 
   # Install Frontend
   - name: node:10.20.1
@@ -14,15 +15,7 @@ steps:
     dir: 'frontend'
     args: ['install']
 
-  # Test
-  - name: node:10.20.1
-    entrypoint: npm
-    args: ['run', 'lint']
-
-  # # Lint
-  # - name: 'gcr.io/cloud-builders/yarn'
-  #   args: ['lint']
-
   # Build
-  - name: 'gcr.io/cloud-builders/yarn'
+  - name: node:10.20.1
+    entrypoint: yarn
     args: ['build-front']
