@@ -1,10 +1,6 @@
 steps:
-  # # Install
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['install']
-
   # Install
-  - name: 'gcr.io/cloud-builders/yarn'
+  - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
   # Lint
