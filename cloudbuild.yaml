@@ -1,0 +1,11 @@
+steps:
+  # Install
+  - name: 'gcr.io/cloud-builders/yarn'
+
+  # Lint
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['lint']
+
+  # Build
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['build-front']

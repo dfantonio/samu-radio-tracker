@@ -8,9 +8,11 @@
   },
   "scripts": {
     "client": "cd frontend && yarn start",
+    "build-front": "cd frontend && yarn build",
     "server": "cd backend && yarn start-dev",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "lint": "eslint frontend/src backend --cache"
+    "lint": "eslint frontend/src backend --cache",
+    "deploy-front": "cd frontend && serve -l 3000 -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
