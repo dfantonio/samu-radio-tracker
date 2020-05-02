@@ -1,19 +1,22 @@
 steps:
   # Install
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:10.20.1
+    entrypoint: npm
     args: ['install']
 
-  - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: 'node'
-    args: ['--version']
+  - name: node:10.20.1
+    entrypoint: node
+    args: ['-v']
 
   # Install Frontend
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:10.20.1
+    entrypoint: npm
     dir: 'frontend'
     args: ['install']
 
   # Test
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:10.20.1
+    entrypoint: npm
     args: ['run', 'lint']
 
   # # Lint
