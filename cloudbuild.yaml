@@ -3,6 +3,10 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'node'
+    args: ['--version']
+
   # Install Frontend
   - name: 'gcr.io/cloud-builders/npm'
     dir: 'frontend'
