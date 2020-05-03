@@ -39,5 +39,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo Eu vejo o usuério do servidor: ${{ secrets.SERVER_USER }}
+          echo e o ip ${{ secrets.SERVER_IP }}.
+
+      - name: build Front
+        run: cd frontend && yarn build
+
+      - name: deploy Front
+        run: cd ssh && ./sample.sh
