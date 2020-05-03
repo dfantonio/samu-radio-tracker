@@ -19,6 +19,5 @@ steps:
   #   args: ['build-front']
 
   # Deploy Front
-  - name: node:10.20.1
-    entrypoint: yarn
-    args: ['deploy-front']
+  - name: ubuntu
+    args: ['bash', './ssh/sample.sh']
