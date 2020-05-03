@@ -12,7 +12,7 @@
     "server": "cd backend && yarn start-dev",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "lint": "eslint frontend/src backend --cache",
-    "deploy-front": "cd frontend && serve -l 3000 -s build"
+    "deploy-front": "cd ssh && ./sample.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

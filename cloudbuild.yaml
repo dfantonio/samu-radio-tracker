@@ -1,21 +1,24 @@
 steps:
-  # Install
-  - name: node:10.20.1
-    entrypoint: yarn
-    # args: ['install']
+  # # Install
+  # - name: node:10.20.1
+  #   entrypoint: yarn
 
-  # Install Frontend
-  - name: node:10.20.1
-    entrypoint: yarn
-    dir: 'frontend'
-    # args: ['install']
+  # # Install Frontend
+  # - name: node:10.20.1
+  #   entrypoint: yarn
+  #   dir: 'frontend'
 
-  # Lint
-  - name: node:10.20.1
-    entrypoint: yarn
-    args: ['lint']
+  # # Lint
+  # - name: node:10.20.1
+  #   entrypoint: yarn
+  #   args: ['lint']
 
-  # Build
+  # # Build
+  # - name: node:10.20.1
+  #   entrypoint: yarn
+  #   args: ['build-front']
+
+  # Deploy Front
   - name: node:10.20.1
     entrypoint: yarn
-    args: ['build-front']
+    args: ['deploy-front']
