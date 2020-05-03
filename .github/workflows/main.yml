@@ -32,28 +32,28 @@ jobs:
       # - name: Run a one-line script
       #   run: echo Hello, world!
 
-      - name: Install dependencies
-        run: |
-          yarn
-          cd frontend && yarn
-
-      - name: Lint
-        run: yarn lint
-
-      # # Runs a set of commands using the runners shell
-      # - name: Run a multi-line script
+      # - name: Install dependencies
       #   run: |
-      #     echo Eu vejo o usuério do servidor: ${{ secrets.SERVER_USER }}
-      #     echo e o ip ${{ secrets.SERVER_IP }}.
+      #     yarn
+      #     cd frontend && yarn
 
-      - name: build Front
-        run: cd frontend && CI=false yarn build
+      # - name: Lint
+      #   run: yarn lint
+
+      # # # Runs a set of commands using the runners shell
+      # # - name: Run a multi-line script
+      # #   run: |
+      # #     echo Eu vejo o usuério do servidor: ${{ secrets.SERVER_USER }}
+      # #     echo e o ip ${{ secrets.SERVER_IP }}.
+
+      # - name: build Front
+      #   run: cd frontend && CI=false yarn build
 
       - name: Deploy Frontend
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
-          SOURCE: 'frontend/build/'
+          SOURCE: 'ssh/teste/'
           REMOTE_HOST: ${{ secrets.SERVER_IP }}
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           TARGET: '/home/samu_gcloud/samu-radio-tracker/frontend/build/'
