@@ -3,6 +3,12 @@ echo "entrei no script"
 echo "$SERVER_IP"
 echo $SERVER_IP
 
+# Desabilita validação de Host
+echo -- Desabilita validacao de Host --
+mkdir -p ~/.ssh
+touch ~/.ssh/config
+echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
+
 # Cria o arquivo da chave SSH
 touch sshCredentials.pem
 echo -e "$SERVER_SSH" > sshCredentials.pem
