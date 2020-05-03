@@ -49,5 +49,14 @@ jobs:
       # - name: build Front
       #   run: cd frontend && CI=false yarn build
 
-      - name: deploy Front
-        run: cd ssh && ./sample.sh
+      # - name: deploy Front
+      #   run: cd ssh && ./sample.sh
+
+      - name: Deploy Frontend
+        uses: easingthemes/ssh-deploy@v2.1.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
+          SOURCE: 'ssh/teste/'
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: '/home/samu_gcloud/samu-radio-tracker/frontend/build/'
