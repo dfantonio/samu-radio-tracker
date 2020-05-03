@@ -24,8 +24,7 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       SERVER_USER: ${{ secrets.SERVER_USER }}
       SERVER_SSH: ${{ secrets.SERVER_SSH }}
-      BFF_URL: 'asd'
-      REACT_APP_API_BFF: 'TESTE'
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
