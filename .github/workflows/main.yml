@@ -24,6 +24,7 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       SERVER_USER: ${{ secrets.SERVER_USER }}
       SERVER_SSH: ${{ secrets.SERVER_SSH }}
+      BFF_URL: ${{ secrets.BFF_URL }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -36,16 +37,11 @@ jobs:
         with:
           working-directory: frontend
 
-      # - name: Install dependencies
-      #   run: |
-      #     yarn
-      #     cd frontend && yarn
-
       - name: Lint
         run: yarn lint
 
       - name: build Front
-        run: cd frontend && CI=false yarn build
+        run: cd frontend && CI=false REACT_APP_API_BFF=BFF_URL yarn build
 
       - name: Deploy Frontend
         uses: easingthemes/ssh-deploy@v2.1.1
