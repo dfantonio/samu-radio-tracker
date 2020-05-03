@@ -58,6 +58,7 @@ export default function Home() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      Será q o pipeline funcionou?
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

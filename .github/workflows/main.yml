@@ -32,13 +32,13 @@ jobs:
       # - name: Run a one-line script
       #   run: echo Hello, world!
 
-      # - name: Install dependencies
-      #   run: |
-      #     yarn
-      #     cd frontend && yarn
+      - name: Install dependencies
+        run: |
+          yarn
+          cd frontend && yarn
 
-      # - name: Lint
-      #   run: yarn lint
+      - name: Lint
+        run: yarn lint
 
       # # Runs a set of commands using the runners shell
       # - name: Run a multi-line script
@@ -46,17 +46,14 @@ jobs:
       #     echo Eu vejo o usuério do servidor: ${{ secrets.SERVER_USER }}
       #     echo e o ip ${{ secrets.SERVER_IP }}.
 
-      # - name: build Front
-      #   run: cd frontend && CI=false yarn build
-
-      # - name: deploy Front
-      #   run: cd ssh && ./sample.sh
+      - name: build Front
+        run: cd frontend && CI=false yarn build
 
       - name: Deploy Frontend
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
-          SOURCE: 'ssh/teste/'
+          SOURCE: 'frontend/build/'
           REMOTE_HOST: ${{ secrets.SERVER_IP }}
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           TARGET: '/home/samu_gcloud/samu-radio-tracker/frontend/build/'
