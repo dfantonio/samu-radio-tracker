@@ -28,10 +28,15 @@ jobs:
       - name: 'cat package.json'
         run: cat ./package.json
 
-      - name: 'Automated Version Bump'
-        uses: 'phips28/gh-action-bump-version@master'
+      # - name: 'Automated Version Bump'
+      #   uses: 'phips28/gh-action-bump-version@master'
+      #   with:
+      #     tag-prefix: ''
+      - name: Bump version and push tag
+        uses: TriPSs/conventional-changelog-action@master
         with:
-          tag-prefix: ''
+          github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+          # git-message: 'chore(release): {version}'
 
       - name: 'cat package.json'
         run: cat ./package.json
