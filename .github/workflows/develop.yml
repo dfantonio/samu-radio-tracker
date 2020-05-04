@@ -1,0 +1,33 @@
+name: Develop Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
+      SERVER_SSH: ${{ secrets.SERVER_SSH }}
+      REACT_APP_API_BFF: ${{ secrets.BFF_URL }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'cat package.json'
+        run: cat ./package.json
+
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: ''
+
+      - name: 'cat package.json'
+        run: cat ./package.json

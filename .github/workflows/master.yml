@@ -1,0 +1,56 @@
+name: Master Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
+      SERVER_SSH: ${{ secrets.SERVER_SSH }}
+      REACT_APP_API_BFF: ${{ secrets.BFF_URL }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Dependências centrais
+        uses: bahmutov/npm-install@v1
+
+      - name: Dependências Frontend
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: frontend
+
+      - name: Lint
+        run: yarn lint
+
+      - name: build Front
+        run: cd frontend && CI=false yarn build
+
+      - name: Deploy Frontend
+        uses: easingthemes/ssh-deploy@v2.1.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
+          SOURCE: 'frontend/build/'
+          ARGS: '-rltgoDzvO --delete'
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: '/home/samu_gcloud/samu-radio-tracker/frontend/build/'
+
+      - name: Deploy Backend
+        uses: easingthemes/ssh-deploy@v2.1.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
+          SOURCE: 'backend/*'
+          ARGS: '-rltgoDzvO --delete'
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: '/home/samu_gcloud/samu-radio-tracker/backend/'
