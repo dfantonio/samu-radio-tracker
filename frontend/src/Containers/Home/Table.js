@@ -38,7 +38,7 @@ function Tabela({ data, isLoading, updateTable, onChange }) {
           onClick: updateTable,
         },
         {
-          icon: 'done',
+          icon: 'assignment_turned_in',
           tooltip: 'Finalizar o empréstimo',
           onClick: (event, rowData) => onChange(rowData),
         },

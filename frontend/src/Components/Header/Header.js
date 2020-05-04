@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useStyles from './styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,11 +12,13 @@ import PropTypes from 'prop-types';
 import Logout from '@material-ui/icons/ExitToApp';
 import { useSelector, useDispatch } from 'react-redux';
 import { Creators as sessionCreators } from '../../Store/Ducks/session';
+import Hidden from '@material-ui/core/Hidden';
 
-function ButtonAppBar({ onToggleTheme, isDarkTheme }) {
+function ButtonAppBar({ onToggleTheme, isDarkTheme, handleDrawerToggle }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { sessionToken, nome } = useSelector(state => state.session);
+  const { pathname } = useSelector(state => state.router.location);
   const isLogged = !!sessionToken;
 
   function renderThemeToggler() {
@@ -30,20 +32,20 @@ function ButtonAppBar({ onToggleTheme, isDarkTheme }) {
   }
 
   function renderUserData() {
-    return isLogged ? (
-      <>
-        <Typography variant="h6">Bem vindo {nome}</Typography>
-        <Tooltip arrow title="Fazer Logout">
-          <IconButton
-            aria-label="logout"
-            onClick={() => dispatch(sessionCreators.clearSession())}
-          >
-            <Logout className={classes.button} />
-          </IconButton>
-        </Tooltip>
-      </>
-    ) : (
-      <></>
+    return (
+      isLogged && (
+        <>
+          <Typography variant="h6">Bem vindo {nome}</Typography>
+          <Tooltip arrow title="Fazer Logout">
+            <IconButton
+              aria-label="logout"
+              onClick={() => dispatch(sessionCreators.clearSession())}
+            >
+              <Logout className={classes.button} />
+            </IconButton>
+          </Tooltip>
+        </>
+      )
     );
   }
 
@@ -51,17 +53,18 @@ function ButtonAppBar({ onToggleTheme, isDarkTheme }) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
+          <Hidden mdUp xsUp={pathname === '/login'}>
+            <IconButton
+              color="inherit"
+              aria-label="Abre o drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
+          <Typography variant="h6" className={classes.title} />
           {renderUserData()}
           {renderThemeToggler()}
         </Toolbar>
@@ -71,12 +74,13 @@ function ButtonAppBar({ onToggleTheme, isDarkTheme }) {
 }
 
 ButtonAppBar.propTypes = {
+  handleDrawerToggle: PropTypes.func.isRequired,
   onToggleTheme: PropTypes.func.isRequired,
   isDarkTheme: PropTypes.bool,
 };
 
 ButtonAppBar.defaultProps = {
-  bool: false,
+  isDarkTheme: false,
 };
 
 export default ButtonAppBar;

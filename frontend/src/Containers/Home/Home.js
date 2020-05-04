@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
-import { withStore } from '../../HigherOrder';
 import SelectInput from '../../Components/SelectInput/SelectInput';
 import useStyles from './styles';
 import { AutocompleteInput, SubmitButton } from '../../Components';
@@ -88,9 +87,6 @@ function Home() {
         break;
     }
   }, [productType]);
-
-  useEffect(() => console.log('payload:', payload), [payload]);
-  useEffect(() => console.log('selectedProduct:', selectedProduct), [selectedProduct]);
 
   function handleInputChange(event) {
     const { target } = event;

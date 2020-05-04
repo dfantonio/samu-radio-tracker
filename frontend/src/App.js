@@ -11,6 +11,7 @@ function themeColor() {
 }
 
 const App = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [theme, setTheme] = useState({
     palette: {
       type: themeColor(),
@@ -26,16 +27,21 @@ const App = () => {
     });
   };
 
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   const muiTheme = createMuiTheme(theme);
 
   return (
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <Header
+        handleDrawerToggle={handleDrawerToggle}
         onToggleTheme={toggleDarkTheme}
         isDarkTheme={theme.palette.type === 'dark'}
       />
-      <Routes />
+      <Routes drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} />
     </MuiThemeProvider>
   );
 };
