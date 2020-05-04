@@ -22,15 +22,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./frontend/package.json
 
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
         with:
+          working-directory: frontend
           tag-prefix: ''
 
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./frontend/package.json
       # - name: Dependências centrais
       #   uses: bahmutov/npm-install@v1
       # - name: Dependências Frontend
