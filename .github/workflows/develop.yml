@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'cat package.json'
+      - name: 'cat package.json antes'
         run: cat ./package.json
 
       - name: 'Automated Version Bump'
