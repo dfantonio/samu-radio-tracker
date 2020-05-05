@@ -27,6 +27,3 @@ jobs:
 
       - name: 'teste de versão do package'
         run: echo ${{steps.get-npm-version.outputs.current-version}} ta funcionando?
-
-      - name: 'cat package.json frontend'
-        run: echo ${{current-version}}
