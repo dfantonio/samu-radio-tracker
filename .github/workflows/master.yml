@@ -30,8 +30,16 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Automated Version Bump
+        uses: phips28/gh-action-bump-version@master
+
+      - name: get-npm-version
+        uses: martinbeentjes/npm-get-version-action@master
+
       - name: build Front
         run: cd frontend && CI=false yarn build
+        env:
+          REACT_APP_VERSION: ${{ steps.get-npm-version.outputs.current-version}}
 
   deploy:
     name: Deploy
