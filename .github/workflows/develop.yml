@@ -22,8 +22,11 @@ jobs:
         uses: 'phips28/gh-action-bump-version@master'
         with:
           tag-prefix: 'frontend-'
+          INPUT_TAG-PREFIX: 'teste-'
         env:
           PACKAGEJSON_DIR: 'frontend'
+          tag-prefix: 'tazxs'
+          INPUT_TAG-PREFIX: 'aaaa'
 
       - name: 'cat package.json'
         run: cat ./package.json
