@@ -20,9 +20,10 @@ jobs:
 
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'frontend '
         env:
           PACKAGEJSON_DIR: 'frontend'
-          tag-prefix: 'frontend '
           INPUT_TAG-PREFIX: 'frontend '
 
       - name: 'cat package.json'
