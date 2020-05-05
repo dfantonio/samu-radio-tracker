@@ -22,6 +22,7 @@ jobs:
         uses: 'phips28/gh-action-bump-version@master'
         env:
           PACKAGEJSON_DIR: 'frontend'
+          tag-prefix: 'frontend '
 
       - name: 'cat package.json'
         run: cat ./package.json
