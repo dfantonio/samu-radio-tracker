@@ -23,6 +23,7 @@ jobs:
         env:
           PACKAGEJSON_DIR: 'frontend'
           tag-prefix: 'frontend '
+          INPUT_TAG-PREFIX: 'frontend '
 
       - name: 'cat package.json'
         run: cat ./package.json
