@@ -30,16 +30,17 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Automated Version Bump
+      - name: Atualizar versão do projeto
         uses: phips28/gh-action-bump-version@master
 
-      - name: get-npm-version
+      - name: Ler a versão do projeto
+        id: packageVersion
         uses: martinbeentjes/npm-get-version-action@master
 
       - name: build Front
         run: cd frontend && CI=false yarn build
         env:
-          REACT_APP_VERSION: ${{ steps.get-npm-version.outputs.current-version}}
+          REACT_APP_VERSION: ${{ steps.packageVersion.outputs.current-version}}
 
       - uses: actions/upload-artifact@v2
         with:
