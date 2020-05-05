@@ -15,16 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: 'Automated Version Bump'
-      #   uses: 'phips28/gh-action-bump-version@master'
-      #   with:
-      #     tag-prefix: 'frontend-'
-      #   env:
-      #     PACKAGEJSON_DIR: 'frontend'
-
-      - name: get-npm-version
-        id: getNpmVersion
-        uses: martinbeentjes/npm-get-version-action@master
-
-      - name: 'teste de versão do package'
-        run: echo ${{steps.getNpmVersion.outputs.current-version}} ta funcionando?
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'frontend-'
+        env:
+          PACKAGEJSON_DIR: 'frontend'
