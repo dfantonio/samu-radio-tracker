@@ -15,18 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'cat package.json antes'
-        run: cat ./package.json
+      # - name: 'Automated Version Bump'
+      #   uses: 'phips28/gh-action-bump-version@master'
+      #   with:
+      #     tag-prefix: 'frontend-'
+      #   env:
+      #     PACKAGEJSON_DIR: 'frontend'
 
-      - name: 'Automated Version Bump'
-        uses: 'phips28/gh-action-bump-version@master'
-        with:
-          tag-prefix: 'frontend-'
-        env:
-          PACKAGEJSON_DIR: 'frontend'
+      - name: get-npm-version
+        uses: martinbeentjes/npm-get-version-action@master
 
-      - name: 'cat package.json'
-        run: cat ./package.json
+      - name: 'teste de versão do package'
+        run: echo ${{ steps.get-npm-version.outputs.current-version}}
 
       - name: 'cat package.json frontend'
-        run: cat ./frontend/package.json
+        run: echo ${ steps.get-npm-version.outputs.current-version}
