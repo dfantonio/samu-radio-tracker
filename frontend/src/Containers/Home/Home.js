@@ -140,7 +140,7 @@ function Home() {
             renderLabel={e => e.tipo}
             getId={e => e.id}
             selected={productType}
-            placeholder="Tipo"
+            placeholder="Objeto"
             name="product_type"
             error={!!bemError && productType === undefined && 'Favor selecionar um tipo'}
           />
@@ -151,7 +151,7 @@ function Home() {
             name="bem_id"
             array={optionsArray()}
             onChange={handleInputChange}
-            placeholder="Objeto"
+            placeholder="Número de série"
             renderLabel={({ numero_serial }) => numero_serial || ''}
             error={bemError}
           />
