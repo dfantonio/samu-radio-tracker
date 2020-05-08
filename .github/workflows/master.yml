@@ -79,4 +79,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH }}
           script: |
+            cd samu-radio-tracker/
             git pull
