@@ -1,4 +1,4 @@
-import { RegisterStuff, Home, Login } from './Containers';
+import { RegisterStuff, Home, Login, NewUser } from './Containers';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { history } from './Store/history';
@@ -27,6 +27,9 @@ const Routes = ({ drawerOpen, handleDrawerToggle }) => {
         <PrivateRoute exact path={paths.CADASTRO}>
           {DrawerWrapper(<RegisterStuff />)}
         </PrivateRoute>
+        <PrivateRoute exact path={paths.NOVO_USUARIO}>
+          {DrawerWrapper(<NewUser />)}
+        </PrivateRoute>
         <Redirect from="*" exact to={paths.HOME} />
       </Switch>
     </ConnectedRouter>
@@ -52,7 +55,7 @@ export const paths = {
   LOGIN: '/login',
   HOME: '/',
   CADASTRO: '/cadastro',
-  NOVO_USUARIO: '/newuser',
+  NOVO_USUARIO: '/novousuario',
 };
 
 export default Routes;
