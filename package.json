@@ -1,6 +1,6 @@
 {
   "name": "root_samu",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "dependencies": {
     "eslint-plugin-react": "^7.19.0",
