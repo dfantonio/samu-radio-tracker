@@ -5,6 +5,9 @@ export const { Types, Creators } = createActions({
   startLogin: ['params'],
   successLogin: ['data'],
   errorLogin: ['errors'],
+  startCadastro: ['params'],
+  successCadastro: ['data'],
+  errorCadastro: ['errors'],
   clearSession: [],
 });
 
@@ -31,7 +34,7 @@ function successLogin(state, { data }) {
   };
 }
 
-function errorLogin(state, { errors }) {
+function requestErrorsHandler(state, { errors }) {
   return {
     ...state,
     errors: {
@@ -67,8 +70,9 @@ function clearSession(state) {
 export const session = {
   [Types.ADD_SESSION_ERRORS]: addSessionErrors,
   [Types.SUCCESS_LOGIN]: successLogin,
-  [Types.ERROR_LOGIN]: errorLogin,
+  [Types.ERROR_LOGIN]: requestErrorsHandler,
   [Types.CLEAR_SESSION]: clearSession,
+  [Types.ERROR_CADASTRO]: requestErrorsHandler,
 };
 
 export default createReducer(initialState, session);

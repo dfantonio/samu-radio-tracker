@@ -11,9 +11,12 @@ const Login = async (req, res) => {
   try {
     const user = await Usuario.findOne({ where: { email } })
       .then(async user => {
-        const passwordEqual = await bcrypt.compareSync(senha, user.senha);
+        if (user.senha) {
+          const passwordEqual = await bcrypt.compareSync(senha, user.senha);
 
-        if (!passwordEqual) throw 'Senha incorreta';
+          if (!passwordEqual) throw 'Senha incorreta';
+        } else user.update({ senha: bcrypt.hashSync(senha, 12) });
+
         return user;
       })
       .catch(e => {

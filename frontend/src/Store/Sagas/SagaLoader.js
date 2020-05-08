@@ -76,6 +76,9 @@ export function* SagaLoader() {
     takeLatest(sessionTypes.START_LOGIN, addLoginLoader),
     takeLatest(sessionTypes.SUCCESS_LOGIN, removeLoginLoader),
     takeLatest(sessionTypes.ERROR_LOGIN, removeLoginLoader),
+    takeLatest(sessionTypes.START_CADASTRO, addLoginLoader),
+    takeLatest(sessionTypes.SUCCESS_CADASTRO, removeLoginLoader),
+    takeLatest(sessionTypes.ERROR_CADASTRO, removeLoginLoader),
   ]);
 }
 

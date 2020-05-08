@@ -43,7 +43,7 @@ function Tabela({ data, isLoading, updateTable, onChange }) {
           onClick: (event, rowData) => onChange(rowData),
         },
       ]}
-      title="Empréstimos em aberto"
+      title="Equipamentos em uso"
     />
   );
 }
