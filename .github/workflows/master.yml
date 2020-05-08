@@ -73,11 +73,10 @@ jobs:
           TARGET: '/home/samu_gcloud/samu-radio-tracker/frontend/build/'
 
       - name: Deploy Backend
-        uses: easingthemes/ssh-deploy@v2.1.1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH }}
-          SOURCE: 'backend/*'
-          ARGS: '-rltgoDzvO --delete'
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          TARGET: '/home/samu_gcloud/samu-radio-tracker/backend/'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH }}
+          script: |
+            git pull
