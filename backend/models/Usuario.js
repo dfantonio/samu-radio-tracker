@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       apelido: {
         type: DataTypes.STRING(45),
-        allowNull: false,
+        allowNull: true,
         unique: true,
       },
       email: {
@@ -23,11 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       senha: {
         type: DataTypes.STRING(32),
-        allowNull: false,
-      },
-      nascimento: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
+        allowNull: true,
       },
       criado_em: {
         type: DataTypes.DATE,
