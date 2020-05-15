@@ -81,3 +81,4 @@ jobs:
           script: |
             cd samu-radio-tracker/
             git pull
+            pm2 restart backend
